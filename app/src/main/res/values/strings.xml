@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">INDEKS</string>
+
+    // Registration
+    <string name="enterMailRegistration">Podaj e-mail</string>
+    <string name="enterPasswordRegistration">Podaj hasło</string>
+    <string name="buttonRegistration">Zarejestruj</string>
+    <string name="textViewRegistration">Jesteś zarejestrowany? Zaloguj się!</string>
+
+    // RegistrationInfo
+    <string name="enterName">Podaj imię</string>
+    <string name="enterSurname">Podaj nazwisko</string>
+    <string name="enterPesel">Podaj pesel</string>
+    <string name="enterStreet">Podaj ulicę</string>
+    <string name="enterCity">Podaj miasto</string>
+    <string name="enterPhoneNumber">Podaj numer telefonu</string>
+    <string name="buttonSave">Zapisz</string>
+
+    // MainActivity - Login
+    <string name="enterMail">Podaj e-mail</string>
+    <string name="enterPassword">Podaj hasło</string>
+    <string name="textViewLogin">Nie masz konta? Zarejestruj się!</string>
+    <string name="buttonLogin">ZALOGUJ</string>
+
+    // Home
+    <string name="text">Przykładowy tekst</string>
+    <string name="buttonLogOut">Wyloguj</string>
+
+</resources>
