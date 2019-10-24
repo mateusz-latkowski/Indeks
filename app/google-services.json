@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "190882009262-4v46u757cagfnqmunvh28mo138l42pbn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.indeks",
+            "certificate_hash": "21aeb98deaab8d20a6219f3befb98ce1385d41fb"
+          }
+        },
+        {
           "client_id": "190882009262-8197dtb7ngb7na54o5jjr5pof64irker.apps.googleusercontent.com",
           "client_type": 3
         }

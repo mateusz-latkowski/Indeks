@@ -67,7 +67,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             finish();
-                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            startActivity(new Intent(getApplicationContext(), RegistrationInfo.class));
                         } else {
                             Toast.makeText(Registration.this, "Błąd rejestracji, spróbuj ponownie!", Toast.LENGTH_SHORT).show();
                         }
@@ -78,8 +78,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == buttonRegister) {
-            //registerUser();
-            startActivity(new Intent(Registration.this, RegistrationInfo.class));
+            registerUser();
         }
 
         if (v == textViewSignup) {
