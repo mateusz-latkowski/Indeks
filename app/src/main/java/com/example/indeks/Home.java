@@ -15,6 +15,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
     private TextView textViewUserEmail;
     private Button buttonLogOut;
+    private Button buttonUserProfile;
 
     private FirebaseAuth firebaseAuth;
 
@@ -36,8 +37,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         textViewUserEmail.setText("Witaj " + user.getEmail());
 
         buttonLogOut = (Button) findViewById(R.id.buttonLogOut);
+        buttonUserProfile = (Button) findViewById(R.id.buttonUserProfile);
 
         buttonLogOut.setOnClickListener(this);
+        buttonUserProfile.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +49,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             firebaseAuth.signOut();
             finish();
             startActivity(new Intent(Home.this, MainActivity.class));
+        }
+
+        if (v == buttonUserProfile) {
+            startActivity(new Intent(Home.this, UserProfil.class));
         }
     }
 }

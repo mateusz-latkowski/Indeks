@@ -28,5 +28,12 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/buttonLogOut" />
 
+        <Button
+            android:id="@+id/buttonUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/buttonUserProfile" />
+
     </LinearLayout>
 </RelativeLayout>
