@@ -40,7 +40,7 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
             startActivity(new Intent(RegistrationInfo.this, MainActivity.class));
         }
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference("students");
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextSurname = (EditText) findViewById(R.id.editTextSurname);
@@ -49,13 +49,14 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
         editTextCity = (EditText) findViewById(R.id.editTextCity);
         editTextPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        // FirebaseUser user = firebaseAuth.getCurrentUser();
 
         buttonSave = (Button) findViewById(R.id.buttonSaveInfo);
         buttonSave.setOnClickListener(this);
     }
 
     private void saveUserInformation() {
+        String studentID = databaseReference.push().getKey();
         String name = editTextName.getText().toString().trim();
         String surname = editTextSurname.getText().toString().trim();
         String pesel = editTextPesel.getText().toString().trim();
@@ -63,11 +64,11 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
         String city = editTextCity.getText().toString().trim();
         String phoneNumber = editTextPhoneNumber.getText().toString().trim();
 
-        UserInformation userInformation = new UserInformation(name, surname, pesel, street, city, phoneNumber);
+        UserInformation userInformation = new UserInformation(studentID, name, surname, pesel, street, city, phoneNumber);
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        //FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        databaseReference.child(user.getUid()).setValue(userInformation);
+        databaseReference.child((studentID)).setValue(userInformation);
 
         Toast.makeText(this, "Zapisywanie danych...", Toast.LENGTH_LONG).show();
         startActivity(new Intent(RegistrationInfo.this, Home.class));
