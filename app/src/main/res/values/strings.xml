@@ -2,6 +2,8 @@
     <string name="app_name">INDEKS</string>
 
     // Registration
+    <string name="mail">lalta96@gmail.com</string>
+    <string name="pass">lalta1</string>
     <string name="enterMailRegistration">Podaj e-mail</string>
     <string name="enterPasswordRegistration">Podaj hasło</string>
     <string name="buttonRegistration">Zarejestruj</string>
@@ -16,6 +18,13 @@
     <string name="enterPhoneNumber">Podaj numer telefonu</string>
     <string name="buttonSave">Zapisz</string>
 
+    <string name="Name">Mateusz</string>
+    <string name="Surname">Latkowski</string>
+    <string name="Pesel">96071302750</string>
+    <string name="Street">Jesionowa 6/4</string>
+    <string name="City">Łazy</string>
+    <string name="PhoneNumber">510563355</string>
+
     // MainActivity - Login
     <string name="enterMail">Podaj e-mail</string>
     <string name="enterPassword">Podaj hasło</string>
@@ -26,5 +35,8 @@
     <string name="text">Przykładowy tekst</string>
     <string name="buttonLogOut">Wyloguj</string>
     <string name="buttonUserProfile">Profil</string>
+
+    // UserProfil
+    <string name="buttonShow">Pokaż</string>
 
 </resources>

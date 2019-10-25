@@ -2,22 +2,19 @@ package com.example.indeks;
 
 public class UserInformation {
 
-    public String StudentID;
     public String Name;
     public String Surname;
-    public String Pesel;
+    public String Pesel_ID;
     public String Street;
     public String City;
     public String PhoneNumber;
 
-    public UserInformation(String studentID, String name, String surname, String pesel, String street, String city, String phoneNumber) {
-        this.StudentID = studentID;
+    public UserInformation(String name, String surname, String pesel_id, String street, String city, String phoneNumber) {
         this.Name = name;
         this.Surname = surname;
-        this.Pesel = pesel;
+        this.Pesel_ID = pesel_id;
         this.Street = street;
         this.City = city;
         this.PhoneNumber = phoneNumber;
     }
 }
-

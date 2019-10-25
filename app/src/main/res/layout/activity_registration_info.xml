@@ -18,6 +18,7 @@
         app:layout_constraintVertical_bias="0.058" />
 
     <EditText
+        android:text="@string/Name"
         android:id="@+id/editTextName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +44,7 @@
         app:layout_constraintVertical_bias="0.079" />
 
     <EditText
+        android:text="@string/Surname"
         android:id="@+id/editTextSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +59,7 @@
         tools:ignore="LabelFor" />
 
     <TextView
-        android:id="@+id/textViewPesel"
+        android:id="@+id/textViewPesel_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enterPesel"
@@ -68,7 +70,8 @@
         app:layout_constraintVertical_bias="0.111" />
 
     <EditText
-        android:id="@+id/editTextPesel"
+        android:text="@string/Pesel"
+        android:id="@+id/editTextPesel_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -77,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPesel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPesel_ID"
         app:layout_constraintVertical_bias="0.021"
         tools:ignore="LabelFor" />
 
@@ -89,10 +92,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPesel"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPesel_ID"
         app:layout_constraintVertical_bias="0.099" />
 
     <EditText
+        android:text="@string/Street"
         android:id="@+id/editTextStreet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -118,6 +122,7 @@
         app:layout_constraintVertical_bias="0.13" />
 
     <EditText
+        android:text="@string/City"
         android:id="@+id/editTextCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -143,6 +148,7 @@
         app:layout_constraintVertical_bias="0.2" />
 
     <EditText
+        android:text="@string/PhoneNumber"
         android:id="@+id/editTextPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
