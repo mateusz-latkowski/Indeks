@@ -37,6 +37,8 @@
     <string name="buttonUserProfile">Profil</string>
 
     // UserProfil
-    <string name="buttonShow">Pokaż</string>
+    <string name="imageDescription">imageStudent</string>
+    <string name="buttonImageUpload">WGRAJ</string>
+    <string name="buttonImageChange">WYBIERZ</string>
 
 </resources>
