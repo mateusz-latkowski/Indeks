@@ -35,6 +35,7 @@
     <string name="text">Przykładowy tekst</string>
     <string name="buttonLogOut">Wyloguj</string>
     <string name="buttonUserProfile">Profil</string>
+    <string name="buttonCalendar">Kalendarz</string>
 
     // UserProfil
     <string name="imageDescription">imageStudent</string>

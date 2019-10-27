@@ -40,6 +40,7 @@ import com.google.firebase.storage.UploadTask;
 
 import org.w3c.dom.Text;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -53,15 +54,16 @@ public class UserProfil extends AppCompatActivity {
     private TextView studentPhoneNumber;
     private DatabaseReference databaseReference;
 
+    private static final int PICK_IMAGE_REQUEST = 71;
+
     private Button buttonUpload;
     private Button buttonChoose;
     private ImageView image;
-
-    public Uri imageURI;
+    private Uri imageURI;
 
     private StorageTask uploadTask;
 
-    StorageReference storageReference;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,8 @@ public class UserProfil extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         storageReference = FirebaseStorage.getInstance().getReference("Images");
+        // databaseReference = FirebaseDatabase.getInstance().getReference("Images");
+
 
         studentName = (TextView) findViewById(R.id.textViewValue_1);
         studentSurname = (TextView) findViewById(R.id.textViewValue_2);
@@ -93,11 +97,7 @@ public class UserProfil extends AppCompatActivity {
         buttonUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uploadTask != null && uploadTask.isInProgress()) {
-                    Toast.makeText(UserProfil.this, "Trwa aktualizowanie...", Toast.LENGTH_LONG).show();
-                } else {
-                    FileUploader();
-                }
+                FileUploader();
             }
         });
 
@@ -143,6 +143,29 @@ public class UserProfil extends AppCompatActivity {
         return true;
     }
 
+    private void FileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imageURI = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageURI);
+                image.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private String getExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
@@ -151,41 +174,23 @@ public class UserProfil extends AppCompatActivity {
     }
 
     private void FileUploader() {
-        StorageReference ref = storageReference.child(System.currentTimeMillis() + "." + getExtension(imageURI));
+        if (imageURI != null) {
+            StorageReference ref = storageReference.child(System.currentTimeMillis() + "." + getExtension(imageURI));
 
-        uploadTask = ref.putFile(imageURI)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get a URL to the uploaded content
-                        // Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                        Toast.makeText(UserProfil.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_LONG).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                        // ...
-                    }
-                });
-    }
+            ref.putFile(imageURI)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(UserProfil.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(UserProfil.this, "Zdjęcie nie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-    private void FileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 1);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageURI = data.getData();
-            image.setImageURI(imageURI);
         }
     }
 }
-

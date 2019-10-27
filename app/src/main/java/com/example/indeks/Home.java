@@ -16,6 +16,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private TextView textViewUserEmail;
     private Button buttonLogOut;
     private Button buttonUserProfile;
+    private Button buttonCalendar;
 
     private FirebaseAuth firebaseAuth;
 
@@ -38,9 +39,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         buttonLogOut = (Button) findViewById(R.id.buttonLogOut);
         buttonUserProfile = (Button) findViewById(R.id.buttonUserProfile);
+        buttonCalendar = (Button) findViewById(R.id.buttonCalendar);
 
         buttonLogOut.setOnClickListener(this);
         buttonUserProfile.setOnClickListener(this);
+        buttonCalendar.setOnClickListener(this);
     }
 
     @Override
