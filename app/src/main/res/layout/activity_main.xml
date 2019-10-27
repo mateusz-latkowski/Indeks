@@ -47,6 +47,13 @@
             android:text="@string/textViewLogin"
             android:textAlignment="center" />
 
+        <TextView
+            android:id="@+id/textViewRecoveryPass"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@string/textViewRecoveryPassword"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
 </RelativeLayout>

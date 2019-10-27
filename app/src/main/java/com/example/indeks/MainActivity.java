@@ -17,12 +17,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonLogin;
     private EditText editTextMail;
     private EditText editTextPassword;
     private TextView textViewSignin;
+    private TextView textViewResetPassword;
 
     private FirebaseAuth firebaseAuth;
 
@@ -42,9 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextPassword = (EditText) findViewById(R.id.editTextPaswswordLogin);
         buttonLogin = (Button) findViewById(R.id.buttonSignIn);
         textViewSignin = (TextView) findViewById(R.id.textViewSignIn);
+        textViewResetPassword = (TextView) findViewById(R.id.textViewRecoveryPass);
 
         buttonLogin.setOnClickListener(this);
         textViewSignin.setOnClickListener(this);
+        textViewResetPassword.setOnClickListener(this);
     }
 
     private void userLogin() {
@@ -81,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (v == textViewSignin) {
             startActivity(new Intent(MainActivity.this, Registration.class));
+        }
+
+        if (v == textViewResetPassword) {
+            startActivity(new Intent(MainActivity.this, ResetPassword.class));
         }
     }
 }

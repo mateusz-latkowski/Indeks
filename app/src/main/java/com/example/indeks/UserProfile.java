@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Application;
-import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,8 +19,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,18 +29,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-
-import org.w3c.dom.Text;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.UUID;
 
-public class UserProfil extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity {
 
     private TextView studentName;
     private TextView studentSurname;
@@ -61,20 +52,15 @@ public class UserProfil extends AppCompatActivity {
     private ImageView image;
     private Uri imageURI;
 
-    private StorageTask uploadTask;
-
     private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profil);
-
+        setContentView(R.layout.activity_user_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         storageReference = FirebaseStorage.getInstance().getReference("Images");
-        // databaseReference = FirebaseDatabase.getInstance().getReference("Images");
-
 
         studentName = (TextView) findViewById(R.id.textViewValue_1);
         studentSurname = (TextView) findViewById(R.id.textViewValue_2);
@@ -181,13 +167,13 @@ public class UserProfil extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(UserProfil.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserProfile.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(UserProfil.this, "Zdjęcie nie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserProfile.this, "Zdjęcie nie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
                         }
                     });
 

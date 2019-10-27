@@ -55,7 +55,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         }
 
         if (v == buttonUserProfile) {
-            startActivity(new Intent(Home.this, UserProfil.class));
+            startActivity(new Intent(Home.this, UserProfile.class));
         }
     }
 }
