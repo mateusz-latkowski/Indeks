@@ -10,12 +10,15 @@
     <string name="textViewRegistration">Jesteś zarejestrowany? Zaloguj się!</string>
 
     // RegistrationInfo
-    <string name="enterName">Imię</string>
+    <string name="enterName">Imię/Imiona</string>
     <string name="enterSurname">Nazwisko</string>
     <string name="birthdayDate">Data urodzenia</string>
     <string name="enterPesel">PESEL</string>
     <string name="enterStreet">Ulica</string>
     <string name="enterCity">Miasto</string>
+    <string name="enterPostalAddress">Kod pocztowy</string>
+    <string name="enterBirthday">Data urodzenia</string>
+    <string name="enterStudy">Kierunek studiów</string>
     <string name="enterPhoneNumber">Numer telefonu</string>
     <string name="buttonSave">Zapisz</string>
 
@@ -24,7 +27,36 @@
     <string name="Pesel">96071302750</string>
     <string name="Street">Jesionowa 6/4</string>
     <string name="City">Łazy</string>
+    <string name="PostalAddress">42-450</string>
+    <string name="Birthday">13-07-1996</string>
     <string name="PhoneNumber">510563355</string>
+
+    <string-array name="kierunki">
+        <item>Administracja</item>
+        <item>Architektura informacji</item>
+        <item>Arteterapia</item>
+        <item>Bezpieczeństwo narodowe i międzynarodowe</item>
+        <item>Biofizyka</item>
+        <item>Biologia</item>
+        <item>Biotechnologia</item>
+        <item>Chemia</item>
+        <item>Doradztwo filozoficzne i coaching</item>
+        <item>Doradztwo filozoficzne i publiczne</item>
+        <item>Dziennikarstwo i komunikacja społeczna</item>
+        <item>Edukacja artystyczna w zakresie sztuk plastycznych</item>
+        <item>Edukacja kulturalna</item>
+        <item>Ekonofizyka</item>
+        <item>Etnologia i antropologia kulturowa</item>
+        <item>Filologia angielska</item>
+        <item>Filologia germańska</item>
+        <item>Filologia klasyczna</item>
+        <item>Filologia polska</item>
+        <item>Informatyka</item>
+        <item>Informatyka Stosowana</item>
+        <item>Pedagogika</item>
+        <item>Psychologia</item>
+        <item></item>
+    </string-array>
 
     // MainActivity - Login
     <string name="enterMail">Podaj e-mail</string>

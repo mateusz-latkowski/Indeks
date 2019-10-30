@@ -40,6 +40,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
 
         buttonRegister = (Button) findViewById(R.id.buttonRegister);
         editTextMail = (EditText) findViewById(R.id.editTextMailRegistration);
+
         editTextPassword = (EditText) findViewById(R.id.editTextPaswswordRegistration);
         textViewSignup = (TextView) findViewById(R.id.textViewSignUp);
 
