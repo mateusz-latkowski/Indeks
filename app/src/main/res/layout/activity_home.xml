@@ -42,5 +42,12 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/buttonCalendar" />
 
+        <Button
+            android:id="@+id/buttonSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/buttonSettings" />
+
     </LinearLayout>
 </RelativeLayout>

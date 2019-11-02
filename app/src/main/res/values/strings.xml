@@ -70,6 +70,7 @@
     <string name="buttonLogOut">Wyloguj</string>
     <string name="buttonUserProfile">Profil</string>
     <string name="buttonCalendar">Kalendarz</string>
+    <string name="buttonSettings">Ustawienia</string>
 
     // UserProfil
     <string name="imageDescription">imageStudent</string>
@@ -81,6 +82,9 @@
     <string name="TextViewResetText">textReset</string>
     <string name="enterEmailReset">emailReset</string>
     <string name="buttonReset">Wyślij</string>
+
+    // Settings
+    <string name="photo">Załącz swoje zdjęcie</string>
 
 
 </resources>

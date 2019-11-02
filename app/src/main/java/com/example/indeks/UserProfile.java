@@ -19,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +32,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -45,14 +49,7 @@ public class UserProfile extends AppCompatActivity {
     private TextView studentPhoneNumber;
     private DatabaseReference databaseReference;
 
-    private static final int PICK_IMAGE_REQUEST = 71;
-
-    private Button buttonUpload;
-    private Button buttonChoose;
     private ImageView image;
-    private Uri imageURI;
-
-    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,32 +57,13 @@ public class UserProfile extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        storageReference = FirebaseStorage.getInstance().getReference("Images");
-
         studentName = (TextView) findViewById(R.id.textViewValue_1);
         studentSurname = (TextView) findViewById(R.id.textViewValue_2);
         studentPesel = (TextView) findViewById(R.id.textViewValue_3);
         studentStreet = (TextView) findViewById(R.id.textViewValue_4);
         studentCity = (TextView) findViewById(R.id.textViewValue_5);
         studentPhoneNumber = (TextView) findViewById(R.id.textViewValue_6);
-
-        buttonUpload = (Button) findViewById(R.id.buttonImageUpload);
-        buttonChoose = (Button) findViewById(R.id.buttonImageChoose);
         image = (ImageView) findViewById(R.id.imageViewStudent);
-
-        buttonChoose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FileChooser();
-            }
-        });
-
-        buttonUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FileUploader();
-            }
-        });
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userID = user.getUid();
@@ -129,54 +107,4 @@ public class UserProfile extends AppCompatActivity {
         return true;
     }
 
-    private void FileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageURI = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageURI);
-                image.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private String getExtension(Uri uri) {
-        ContentResolver contentResolver = getContentResolver();
-        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-    }
-
-    private void FileUploader() {
-        if (imageURI != null) {
-            StorageReference ref = storageReference.child(System.currentTimeMillis() + "." + getExtension(imageURI));
-
-            ref.putFile(imageURI)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(UserProfile.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(UserProfile.this, "Zdjęcie nie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-        }
-    }
 }
