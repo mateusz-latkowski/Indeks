@@ -71,6 +71,7 @@
     <string name="buttonUserProfile">Profil</string>
     <string name="buttonCalendar">Kalendarz</string>
     <string name="buttonSettings">Ustawienia</string>
+    <string name="buttonSendMail">E-mail</string>
 
     // UserProfil
     <string name="imageDescription">imageStudent</string>
@@ -85,6 +86,13 @@
 
     // Settings
     <string name="photo">Załącz swoje zdjęcie</string>
+
+    // SendEmail
+    <string name="recipient">lalta96@gmail.com</string>
+    <string name="subject">Próba</string>
+    <string name="message">To jest pierwszy email</string>
+    <string name="buttonSend">Wyślij</string>
+    <string name="password">psychomaterionety</string>
 
 
 </resources>

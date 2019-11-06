@@ -15,8 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,6 +42,7 @@ public class Settings extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 71;
 
     private StorageReference storageReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,14 +123,20 @@ public class Settings extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String userID = user.getUid();
             StorageReference ref = storageReference.child(userID + "." + getExtension(imageURI));
-            databaseReference.child("Image").setValue(userID + "." + getExtension(imageURI));
+            databaseReference.child("Image_Information").child("Name").setValue(userID + "." + getExtension(imageURI));
 
             ref.putFile(imageURI)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String download_url = uri.toString();
+                                    databaseReference.child("Image_Information").child("URL").setValue(download_url);
+                                }
+                            });
                             Toast.makeText(Settings.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
-
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
