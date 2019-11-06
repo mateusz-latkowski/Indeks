@@ -86,6 +86,11 @@
 
     // Settings
     <string name="photo">Załącz swoje zdjęcie</string>
+    <string name="changePassword">Zmiana hasła</string>
+    <string name="currentPassword">Obecne hasło</string>
+    <string name="newPassword">Nowe hasło</string>
+    <string name="newPassword2">Powtórz nowe hasło</string>
+    <string name="buttonChangePassword">Zmień hasło</string>
 
     // SendEmail
     <string name="recipient">lalta96@gmail.com</string>
