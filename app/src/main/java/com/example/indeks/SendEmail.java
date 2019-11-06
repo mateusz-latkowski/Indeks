@@ -3,7 +3,6 @@ package com.example.indeks;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import java.util.Properties;
 
-import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -34,23 +32,19 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
     private EditText editTextMess;
     private Button buttonSend;
 
-    String mail;
+    private Session session;
+
+    String email;
     String password;
     String recipient;
     String subject;
     String message;
-
-    Context context = null;
-    Session session = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_email);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        context = this;
 
         enterMail = (EditText) findViewById(R.id.editTextEnterEmail);
         enterPass = (EditText) findViewById(R.id.editTextEnterPassword);
@@ -63,44 +57,45 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         buttonSend.setOnClickListener(this);
     }
 
+    private void sendEmail() {
+        email = enterMail.getText().toString().trim();
+        password = enterPass.getText().toString().trim();
 
-    @Override
-    public void onClick(View v) {
-        mail = enterMail.getText().toString();
-        password = enterPass.getText().toString();
-        recipient = editTextRecipient.getText().toString();
-        subject = editTextSubject.getText().toString();
-        message = editTextMess.getText().toString();
+        recipient = editTextRecipient.getText().toString().trim();
+        subject = editTextSubject.getText().toString().trim();
+        message = editTextMess.getText().toString().trim();
 
-        Properties prop = new Properties();
-
-        prop.put("mail.smtp.host", "smtp.gmail.com");
-        prop.put("mail.smtp.socketFactory.port", "465");
-        prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        prop.put("mail.smtp.auth", "true");
-        prop.put("mail.smtp.port", "465");
-
-        session = Session.getDefaultInstance(prop, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(mail, password);
-            }
-        });
-
-        RetreiveFeedTask task = new RetreiveFeedTask();
-        task.execute();
+        SendEmailConfiguration smc = new SendEmailConfiguration();
+        smc.execute();
     }
 
-    class RetreiveFeedTask extends AsyncTask<String, Void, String> {
+    class SendEmailConfiguration extends AsyncTask<Void, Void, Void> {
+
         @Override
-        protected String doInBackground(String... strings) {
+        protected Void doInBackground(Void... params) {
+            Properties prop = new Properties();
+
+            prop.put("mail.smtp.host", "smtp.gmail.com");
+            prop.put("mail.smtp.socketFactory.port", "465");
+            prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            prop.put("mail.smtp.auth", "true");
+            prop.put("mail.smtp.port", "465");
+
+            session = Session.getDefaultInstance(prop,
+                    new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(email, password);
+                        }
+                    });
+
             try {
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(mail));
-                message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-                message.setSubject(subject);
-                message.setContent(message, "text/html");
-                Transport.send(message);
+                MimeMessage mess = new MimeMessage(session);
+                mess.setFrom(new InternetAddress(email));
+                mess.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+                mess.setSubject(subject);
+                mess.setText(message);
+
+                Transport.send(mess);
 
             } catch (MessagingException e) {
                 e.printStackTrace();
@@ -109,11 +104,14 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         }
 
         @Override
-        protected void onPostExecute(String result) {
-            //finish();
+        protected void onPostExecute(Void aVoid) {
+            finish();
             Toast.makeText(getApplicationContext(), "Wiadomość została wysłana!", Toast.LENGTH_SHORT).show();
-
         }
+    }
+    @Override
+    public void onClick(View v) {
+        sendEmail();
     }
 
     @Override
