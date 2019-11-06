@@ -92,9 +92,11 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
 
         UserInformation userInformation = new UserInformation(name, surname, pesel, street, city, postalAddress, birthdayDate, study, phoneNumber, email, userID);
 
-        databaseReference.child((userID)).setValue(userInformation);
+        databaseReference.child(userID).child("User_Information").setValue(userInformation);
+        databaseReference.child(userID).child("Image_Information").child("Name").setValue("Empty").toString();
+        databaseReference.child(userID).child("Image_Information").child("URL").setValue("Empty").toString();
 
-        Toast.makeText(this, "Zapisywanie danych...", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Zapisywanie danych...", Toast.LENGTH_SHORT).show();
 
         finish();
         startActivity(new Intent(RegistrationInfo.this, Home.class));
