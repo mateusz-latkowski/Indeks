@@ -43,9 +43,14 @@ public class Settings extends AppCompatActivity {
     private Button buttonUpload;
     private Button buttonChoose;
     private Button buttonChangePassword;
+    private Button buttonChangeData;
 
     private EditText newPassword;
     private EditText newPassword2;
+    private EditText newStreet;
+    private EditText newCity;
+    private EditText newPostalAddress;
+    private EditText newPhoneNumber;
 
     private Uri imageURI;
 
@@ -67,6 +72,7 @@ public class Settings extends AppCompatActivity {
         buttonUpload = (Button) findViewById(R.id.buttonImageUpload);
         buttonChoose = (Button) findViewById(R.id.buttonImageChoose);
         buttonChangePassword = (Button) findViewById(R.id.buttonChangePassword);
+        buttonChangeData = (Button) findViewById(R.id.buttonChangeData);
 
         buttonChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +92,39 @@ public class Settings extends AppCompatActivity {
                 FileUploader();
             }
         });
+        buttonChangeData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeData();
+            }
+        });
+    }
+
+    private void changeData() {
+        newStreet = (EditText) findViewById(R.id.editTextChangeStreet);
+        newCity = (EditText) findViewById(R.id.editTextChangeCity);
+        newPostalAddress = (EditText) findViewById(R.id.editTextChangePostalAddress);
+        newPhoneNumber = (EditText) findViewById(R.id.editTextChangePhoneNumber);
+
+        String street = newStreet.getText().toString().trim();
+        String city = newCity.getText().toString().trim();
+        String postalAddress = newPostalAddress.getText().toString().trim();
+        String phoneNumber = newPhoneNumber.getText().toString().trim();
+
+        if (!street.isEmpty()) {
+            databaseReference.child("User_Information").child("Street").setValue(street); }
+        if (!city.isEmpty()) {
+            databaseReference.child("User_Information").child("City").setValue(city); }
+        if (!postalAddress.isEmpty()) {
+            databaseReference.child("User_Information").child("PostalAddress").setValue(postalAddress); }
+        if (!phoneNumber.isEmpty()) {
+            databaseReference.child("User_Information").child("PhoneNumber").setValue(phoneNumber); }
+
+        Toast.makeText(Settings.this, "Twoje dane zostały zaktualizowane!", Toast.LENGTH_SHORT).show();
+        newStreet.setText("");
+        newCity.setText("");
+        newPostalAddress.setText("");
+        newPhoneNumber.setText("");
     }
 
     private void changePassword() {

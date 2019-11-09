@@ -86,11 +86,19 @@
 
     // Settings
     <string name="photo">Załącz swoje zdjęcie</string>
+
     <string name="changePassword">Zmiana hasła</string>
     <string name="currentPassword">Obecne hasło</string>
     <string name="newPassword">Nowe hasło</string>
     <string name="newPassword2">Powtórz nowe hasło</string>
     <string name="buttonChangePassword">Zmień hasło</string>
+
+    <string name="changeData">Zmień dane</string>
+    <string name="changeStreet">Ulica</string>
+    <string name="changeCity">Miasto</string>
+    <string name="changePostalAddress">Kod pocztowy (00-000)</string>
+    <string name="changePhoneNumber">Number telefonu</string>
+    <string name="changeDataButton">AKTUALIZUJ</string>
 
     // SendEmail
     <string name="recipient">mateusz.latkowski@smcebi.edu.pl</string>
