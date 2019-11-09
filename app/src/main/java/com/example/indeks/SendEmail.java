@@ -39,7 +39,6 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
     String recipient;
     String subject;
     String message;
-    String serverEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
