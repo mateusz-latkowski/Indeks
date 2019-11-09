@@ -76,16 +76,7 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         protected Void doInBackground(Void... params) {
             Properties prop = new Properties();
 
-            if (email.toLowerCase().contains("op.pl".toLowerCase()) || email.toLowerCase().contains("onet.pl".toLowerCase())) {
-                serverEmail = "smtp.poczta.onet.pl"; }
-            if (email.toLowerCase().contains("gmail.com".toLowerCase()) || email.toLowerCase().contains("smcebi.edu.pl".toLowerCase()) || email.toLowerCase().contains("us.edu.pl".toLowerCase())) {
-                serverEmail = "smtp.gmail.com"; }
-//            if (email.toLowerCase().contains("interia.pl".toLowerCase())) {
-//                serverEmail = "poczta.interia.pl"; }
-//            if (email.toLowerCase().contains("wp.pl".toLowerCase())) {
-//                serverEmail = "smtp.wp.pl"; }
-
-            prop.put("mail.smtp.host", serverEmail);
+            prop.put("mail.smtp.host", "smtp.gmail.com");
             prop.put("mail.smtp.socketFactory.port", "465");
             prop.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
             prop.put("mail.smtp.auth", "true");
@@ -116,7 +107,7 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         @Override
         protected void onPostExecute(Void aVoid) {
             finish();
-            Toast.makeText(getApplicationContext(), "Wiadomość została wysłana!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Twoja wiadomość została wysłana!", Toast.LENGTH_SHORT).show();
         }
     }
     @Override
