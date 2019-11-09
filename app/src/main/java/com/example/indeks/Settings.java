@@ -134,7 +134,7 @@ public class Settings extends AppCompatActivity {
         final String newPass = newPassword.getText().toString().trim();
         final String newPass2 = newPassword2.getText().toString().trim();
 
-        if (newPass.isEmpty() || newPass2.isEmpty()) {
+        if (newPass.isEmpty() && newPass2.isEmpty()) {
             Toast.makeText(Settings.this, "Wypełnij wszystkie pola!", Toast.LENGTH_SHORT).show(); }
         if (!newPass.equals(newPass2)) {
             Toast.makeText(Settings.this, "Podane hasła różnią się!", Toast.LENGTH_SHORT).show();
