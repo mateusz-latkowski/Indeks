@@ -61,6 +61,7 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("PROFIL");
 
         studentName = (TextView) findViewById(R.id.textViewValue_1);
         studentSurname = (TextView) findViewById(R.id.textViewValue_2);

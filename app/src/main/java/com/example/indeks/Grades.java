@@ -97,6 +97,7 @@ public class Grades extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grades);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("OCENY");
 
         study = RegistrationInfo.study;
         if (study.equals("Informatyka Stosowana")) {

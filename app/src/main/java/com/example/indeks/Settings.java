@@ -61,6 +61,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("USTAWIENIA");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         String userID = user.getUid();

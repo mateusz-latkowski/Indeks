@@ -45,6 +45,7 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_email);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("E-MAIL");
 
         enterMail = (EditText) findViewById(R.id.editTextEnterEmail);
         enterPass = (EditText) findViewById(R.id.editTextEnterPassword);
