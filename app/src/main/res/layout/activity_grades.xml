@@ -486,15 +486,15 @@
                 android:background="#000000">
 
                 <TextView
-                    android:id="@+id/textViewRow14_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_column="0"
-                    android:layout_margin="1dp"
-                    android:visibility="gone"
-                    android:background="#FFFFFF"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="15sp" />
+                     android:id="@+id/textViewRow14_1"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_column="0"
+                     android:layout_margin="1dp"
+                     android:visibility="gone"
+                     android:background="#FFFFFF"
+                     android:textAppearance="?android:attr/textAppearanceLarge"
+                     android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/textViewRow14_2"
@@ -826,17 +826,17 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/textViewRow25_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_column="1"
-                    android:visibility="gone"
-                    android:layout_margin="1dp"
-                    android:background="#FFFFFF"
-                    android:gravity="center"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/textViewRow25_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:visibility="gone"
+                        android:layout_margin="1dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textSize="15sp" />
             </TableRow>
 
             <TableRow

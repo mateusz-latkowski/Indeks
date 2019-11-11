@@ -3,8 +3,14 @@ package com.example.indeks;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +18,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -87,7 +94,7 @@ public class Grades extends AppCompatActivity {
 
 
 
-    private String study;
+    private String study, userID;
 
     private DatabaseReference databaseReference;
 
@@ -99,10 +106,25 @@ public class Grades extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("OCENY");
 
-        study = RegistrationInfo.study;
-        if (study.equals("Informatyka Stosowana")) {
-            informatykaStosowana();
-        }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("User_Information");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                study = dataSnapshot.child("Study").getValue().toString();
+
+                if (study.equals("Informatyka Stosowana")) {
+                    informatykaStosowana();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -167,8 +189,6 @@ public class Grades extends AppCompatActivity {
         textView28_1 = (TextView) findViewById(R.id.textViewRow28_1);
         textView28_2 = (TextView) findViewById(R.id.textViewRow28_2);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userID = user.getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("Grades").child("InformatykaStosowana");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
@@ -202,6 +222,10 @@ public class Grades extends AppCompatActivity {
                 textView9_2.setText(wdpia);
                 textView10_1.setText("SEMESTR 1 ZALICZONY?");
                 textView10_2.setText(semestr_1);
+
+                if (!lektorat.equals("Empty")) {
+                    addNotifications();
+                }
 
                 if (semestr_1.equals("TAK")) {
                     String aip = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").getValue().toString();
@@ -301,8 +325,9 @@ public class Grades extends AppCompatActivity {
 
             }
         });
-
     }
+
+    private void addNotifications() {}
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
