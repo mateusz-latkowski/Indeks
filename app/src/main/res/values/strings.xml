@@ -73,6 +73,7 @@
     <string name="buttonSettings">Ustawienia</string>
     <string name="buttonSendMail">E-mail</string>
     <string name="buttonGrades">Oceny</string>
+    <string name="buttonTeachers">Nauczyciele</string>
 
     // UserProfil
     <string name="imageDescription">imageStudent</string>
