@@ -20,6 +20,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private Button buttonSett;
     private Button buttonSendMail;
     private Button buttonGrades;
+    private Button buttonTeachers;
 
     private FirebaseAuth firebaseAuth;
 
@@ -46,6 +47,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonSett = (Button) findViewById(R.id.buttonSettings);
         buttonSendMail = (Button) findViewById(R.id.buttonEmail);
         buttonGrades = (Button) findViewById(R.id.buttonGrades);
+        buttonTeachers = (Button) findViewById(R.id.buttonTeachers);
 
         buttonLogOut.setOnClickListener(this);
         buttonUserProfile.setOnClickListener(this);
@@ -53,6 +55,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonSett.setOnClickListener(this);
         buttonSendMail.setOnClickListener(this);
         buttonGrades.setOnClickListener(this);
+        buttonTeachers.setOnClickListener(this);
     }
 
     @Override
@@ -64,19 +67,18 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         }
 
         if (v == buttonUserProfile) {
-            startActivity(new Intent(Home.this, UserProfile.class));
-        }
+            startActivity(new Intent(Home.this, UserProfile.class)); }
 
         if (v == buttonSett) {
-            startActivity(new Intent(Home.this, Settings.class));
-        }
+            startActivity(new Intent(Home.this, Settings.class)); }
 
         if (v == buttonSendMail) {
-            startActivity(new Intent(Home.this, SendEmail.class));
-        }
+            startActivity(new Intent(Home.this, SendEmail.class)); }
 
         if (v == buttonGrades) {
-            startActivity(new Intent(Home.this, Grades.class));
-        }
+            startActivity(new Intent(Home.this, Grades.class)); }
+
+        if (v == buttonTeachers) {
+            startActivity(new Intent(Home.this, Teachers.class)); }
     }
 }

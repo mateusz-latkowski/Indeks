@@ -18,8 +18,8 @@
             android:id="@+id/textViewUserEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:text="@string/text"/>
 
         <Button
             android:id="@+id/buttonLogOut"
@@ -62,6 +62,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/buttonGrades" />
+
+        <Button
+            android:id="@+id/buttonTeachers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/buttonTeachers" />
 
     </LinearLayout>
 </RelativeLayout>
