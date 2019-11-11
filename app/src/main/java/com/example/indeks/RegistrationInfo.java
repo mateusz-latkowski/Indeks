@@ -124,7 +124,7 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
             databaseReference.child("Semestr_1").child("Wstęp do informatyki").setValue("Empty");
             databaseReference.child("Semestr_1").child("Wstęp do programowania").setValue("Empty");
             databaseReference.child("Semestr_1").child("Wstęp do pomiarów i automatyki").setValue("Empty");
-            databaseReference.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").setValue("TAK");
+            databaseReference.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").setValue("NIE");
 
             databaseReference.child("Semestr_2").child("Matematyka II").setValue("Empty");
             databaseReference.child("Semestr_2").child("Lektorat języka angielskiego II").setValue("Empty");
