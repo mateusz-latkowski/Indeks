@@ -52,7 +52,7 @@ public class UserProfile extends AppCompatActivity {
     private TextView studentBirthdayDate;
     private TextView studentStudy;
     private TextView studentPhoneNumber;
-    private DatabaseReference databaseReference, databaseReferenceImage;
+    private DatabaseReference databaseReference;
 
     private ImageView image;
 
