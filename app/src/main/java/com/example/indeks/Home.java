@@ -80,5 +80,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         if (v == buttonTeachers) {
             startActivity(new Intent(Home.this, Teachers.class)); }
+
+        if (v == buttonCalendar) {
+            startActivity(new Intent(Home.this, Calendar.class)); }
     }
 }
