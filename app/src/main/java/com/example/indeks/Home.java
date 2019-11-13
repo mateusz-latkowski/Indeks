@@ -21,6 +21,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private Button buttonSendMail;
     private Button buttonGrades;
     private Button buttonTeachers;
+    private Button buttonChat;
+    private Button buttonApplication;
 
     private FirebaseAuth firebaseAuth;
 
@@ -48,6 +50,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonSendMail = (Button) findViewById(R.id.buttonEmail);
         buttonGrades = (Button) findViewById(R.id.buttonGrades);
         buttonTeachers = (Button) findViewById(R.id.buttonTeachers);
+        buttonChat = (Button) findViewById(R.id.buttonChat);
+        buttonApplication = (Button) findViewById(R.id.buttonApplication);
 
         buttonLogOut.setOnClickListener(this);
         buttonUserProfile.setOnClickListener(this);
@@ -56,6 +60,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonSendMail.setOnClickListener(this);
         buttonGrades.setOnClickListener(this);
         buttonTeachers.setOnClickListener(this);
+        buttonChat.setOnClickListener(this);
+        buttonApplication.setOnClickListener(this);
     }
 
     @Override
@@ -83,5 +89,11 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         if (v == buttonCalendar) {
             startActivity(new Intent(Home.this, CalendarEvent.class)); }
+
+        if (v == buttonChat) {
+            startActivity(new Intent(Home.this, Chat.class)); }
+
+        if (v == buttonApplication) {
+            startActivity(new Intent(Home.this, SendApplication.class)); }
     }
 }
