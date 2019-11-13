@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -92,7 +95,8 @@ public class Grades extends AppCompatActivity {
     private TextView textView28_1;
     private TextView textView28_2;
 
-
+    private final String CHANNEL_ID = "personal_notification";
+    private final int NOTIFICATION_ID = 001;
 
     private String study, userID;
 
@@ -223,9 +227,8 @@ public class Grades extends AppCompatActivity {
                 textView10_1.setText("SEMESTR 1 ZALICZONY?");
                 textView10_2.setText(semestr_1);
 
-                if (!lektorat.equals("Empty")) {
-                    addNotifications();
-                }
+                if (!lektorat.equals("Empty") || !matematyka.equals("Empty") || !owi.equals("Empty") || !pusk.equals("Empty") || !wf.equals("Empty") || !wdi.equals("Empty") || !wdp.equals("Empty") || !wdpia.equals("Empty")) {
+                    notification(); }
 
                 if (semestr_1.equals("TAK")) {
                     String aip = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").getValue().toString();
@@ -272,6 +275,9 @@ public class Grades extends AppCompatActivity {
                     textView18_2.setText(semestr_2);
                     textView18_2.setVisibility(View.VISIBLE);
 
+                    if (!aip.equals("Empty") || !ak.equals("Empty") || !fizyka.equals("Empty") || !lektorat2.equals("Empty") || !matematyka2.equals("Empty") || !peie.equals("Empty") || !wf2.equals("Empty")) {
+                        notification(); }
+
                     if (semestr_2.equals("TAK")) {
                         String aisd = dataSnapshot.child("Semestr_3").child("Algorytmy i struktury danych").getValue().toString();
                         String bd =  dataSnapshot.child("Semestr_3").child("Bazy danych").getValue().toString();
@@ -316,6 +322,9 @@ public class Grades extends AppCompatActivity {
                         textView28_1.setVisibility(View.VISIBLE);
                         textView28_2.setText(semestr_3);
                         textView28_2.setVisibility(View.VISIBLE);
+
+                        if (!aisd.equals("Empty") || !bd.equals("Empty") || !lektorat3.equals("Empty") || !md.equals("Empty") || !ptm.equals("Empty") || !pi.equals("Empty") || !sk.equals("Empty")) {
+                            notification(); }
                     }
                 }
             }
@@ -327,7 +336,36 @@ public class Grades extends AppCompatActivity {
         });
     }
 
-    private void addNotifications() {}
+    public void notification() {
+        createNotificationChannel();
+        Intent intent = new Intent(this, Grades.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.ic_message);
+        builder.setContentTitle("Indeks elektroniczny");
+        builder.setContentText("Dodano nową ocenę!");
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "Personal Notifications";
+            String description = "Include all the personal notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+            notificationChannel.setDescription(description);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
