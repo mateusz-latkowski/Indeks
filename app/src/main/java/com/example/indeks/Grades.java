@@ -208,6 +208,15 @@ public class Grades extends AppCompatActivity {
                 String wdpia = dataSnapshot.child("Semestr_1").child("Wstęp do pomiarów i automatyki").getValue().toString();
                 String semestr_1 = dataSnapshot.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").getValue().toString();
 
+                String lektorat_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Lektorat języka angielskieg I").getValue().toString();
+                String matematyka_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Matematyka I").getValue().toString();
+                String owi_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Ochrona własności intelektualnej").getValue().toString();
+                String pusk_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Podstawy użytkowania systemów komputerowych").getValue().toString();
+                String wf_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("WF").getValue().toString();
+                String wdi_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Wstęp do informatyki").getValue().toString();
+                String wdp_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Wstęp do programowania").getValue().toString();
+                String wdpia_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Wstęp do pomiarów i automatyki").getValue().toString();
+
                 textView2_1.setText("Lektorat języka angielskiego I");
                 textView2_2.setText(lektorat);
                 textView3_1.setText("Matematyka I");
@@ -227,8 +236,15 @@ public class Grades extends AppCompatActivity {
                 textView10_1.setText("SEMESTR 1 ZALICZONY?");
                 textView10_2.setText(semestr_1);
 
-                if (!lektorat.equals("Empty") || !matematyka.equals("Empty") || !owi.equals("Empty") || !pusk.equals("Empty") || !wf.equals("Empty") || !wdi.equals("Empty") || !wdp.equals("Empty") || !wdpia.equals("Empty")) {
-                    notification(); }
+                String[] subject = {lektorat, matematyka, owi, pusk, wf, wdi, wdp, wdpia};
+                String[] subject_not = {lektorat_notification, matematyka_notification, owi_notification, pusk_notification, wf_notification, wdi_notification, wdp_notification, wdpia_notification};
+
+                for (int i = 0; i < subject.length-1; i++) {
+                    if (!subject[i].equals("Empty")) {
+                        if (subject_not[i].equals("1")) {
+                            notification(); }
+                    }
+                }
 
                 if (semestr_1.equals("TAK")) {
                     String aip = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").getValue().toString();
