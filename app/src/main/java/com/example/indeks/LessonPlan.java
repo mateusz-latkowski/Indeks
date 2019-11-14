@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SendApplication extends AppCompatActivity {
+public class LessonPlan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_application);
+        setContentView(R.layout.activity_lesson_plan);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("PODANIA");
+        getSupportActionBar().setTitle("PLAN ZAJĘĆ");
     }
 
     @Override

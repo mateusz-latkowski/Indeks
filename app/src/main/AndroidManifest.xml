@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SendApplication"></activity>
+        <activity android:name=".LessonPlan"></activity>
         <activity android:name=".Chat" />
         <activity android:name=".CalendarEvent" />
         <activity android:name=".Teachers" />

@@ -74,7 +74,7 @@
     <string name="buttonSendMail">E-mail</string>
     <string name="buttonGrades">Oceny</string>
     <string name="buttonTeachers">Nauczyciele</string>
-    <string name="buttonApplication">Podania</string>
+    <string name="buttonApplication">Plan zajęć</string>
     <string name="buttonChat">Chat</string>
 
     // UserProfil
