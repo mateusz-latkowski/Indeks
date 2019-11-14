@@ -186,6 +186,27 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
             databaseReference.child("Semestr_7").child("Pracownia programowania zespołowego - część 2").setValue("Empty");
             databaseReference.child("Semestr_7").child("Seminarium inżynierskie").setValue("Empty");
             databaseReference.child("Semestr_7").child("_SEMESTR_7_ZALICZONY_?").setValue("NIE");
+
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("Schedule");
+            databaseReference.child("Wtorek").child("11:30").child("Subject").setValue("Seminarium inżynierskie");
+            databaseReference.child("Wtorek").child("11:30").child("Time").setValue("11:30 - 13:00");
+            databaseReference.child("Wtorek").child("11:30").child("Teacher").setValue("Kobieta Kot");
+            databaseReference.child("Wtorek").child("11:30").child("Room").setValue("B/-1/09");
+
+            databaseReference.child("Wtorek").child("13:45").child("Subject").setValue("Człowiek w społeczeństwie, społeczeństwo w człowieku");
+            databaseReference.child("Wtorek").child("13:45").child("Time").setValue("13:45 - 15:15");
+            databaseReference.child("Wtorek").child("13:45").child("Teacher").setValue("Kot Bonifacy");
+            databaseReference.child("Wtorek").child("13:45").child("Room").setValue("P/0/01");
+
+            databaseReference.child("Środa").child("8:00").child("Subject").setValue("Pracownia programowania inżynierskiego cz. 2");
+            databaseReference.child("Środa").child("8:00").child("Time").setValue("8:00 - 11:00");
+            databaseReference.child("Środa").child("8:00").child("Teacher").setValue("Pingwin z Batmana");
+            databaseReference.child("Środa").child("8:00").child("Room").setValue("S/0/05");
+
+            databaseReference.child("Środa").child("11:30").child("Subject").setValue("Pracownia inżynierska cz. 2");
+            databaseReference.child("Środa").child("11:30").child("Time").setValue("11:30 - 13:00");
+            databaseReference.child("Środa").child("11:30").child("Teacher").setValue("Ambroży Kleks");
+            databaseReference.child("Środa").child("11:30").child("Room").setValue("P/0/03");
         }
     }
 
