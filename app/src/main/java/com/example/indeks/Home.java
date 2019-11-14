@@ -22,7 +22,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private Button buttonGrades;
     private Button buttonTeachers;
     private Button buttonChat;
-    private Button buttonApplication;
+    private Button buttonLessonPlan;
 
     private FirebaseAuth firebaseAuth;
 
@@ -51,7 +51,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonGrades = (Button) findViewById(R.id.buttonGrades);
         buttonTeachers = (Button) findViewById(R.id.buttonTeachers);
         buttonChat = (Button) findViewById(R.id.buttonChat);
-        buttonApplication = (Button) findViewById(R.id.buttonApplication);
+        buttonLessonPlan = (Button) findViewById(R.id.buttonLessonPlan);
 
         buttonLogOut.setOnClickListener(this);
         buttonUserProfile.setOnClickListener(this);
@@ -61,7 +61,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonGrades.setOnClickListener(this);
         buttonTeachers.setOnClickListener(this);
         buttonChat.setOnClickListener(this);
-        buttonApplication.setOnClickListener(this);
+        buttonLessonPlan.setOnClickListener(this);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         if (v == buttonChat) {
             startActivity(new Intent(Home.this, Chat.class)); }
 
-        if (v == buttonApplication) {
-            startActivity(new Intent(Home.this, SendApplication.class)); }
+        if (v == buttonLessonPlan) {
+            startActivity(new Intent(Home.this, LessonPlan.class)); }
     }
 }
