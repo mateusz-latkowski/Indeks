@@ -126,6 +126,15 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
             databaseReference.child("Semestr_1").child("Wstęp do pomiarów i automatyki").setValue("Empty");
             databaseReference.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").setValue("NIE");
 
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Matematyka I").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Lektorat języka angielskiego I").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Ochrona własności intelektualnej").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Podstawy użytkowania systemów komputerowych").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("WF").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Wstęp do informatyki").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Wstęp do programowania").setValue("Empty");
+            databaseReference.child("Semestr_1_NOTIFICATION").child("Wstęp do pomiarów i automatyki").setValue("Empty");
+
             databaseReference.child("Semestr_2").child("Matematyka II").setValue("Empty");
             databaseReference.child("Semestr_2").child("Lektorat języka angielskiego II").setValue("Empty");
             databaseReference.child("Semestr_2").child("Fizyka").setValue("Empty");
