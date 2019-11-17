@@ -208,7 +208,7 @@ public class Grades extends AppCompatActivity {
                 String wdpia = dataSnapshot.child("Semestr_1").child("Wstęp do pomiarów i automatyki").getValue().toString();
                 String semestr_1 = dataSnapshot.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").getValue().toString();
 
-                String lektorat_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Lektorat języka angielskieg I").getValue().toString();
+                String lektorat_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Lektorat języka angielskiego I").getValue().toString();
                 String matematyka_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Matematyka I").getValue().toString();
                 String owi_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Ochrona własności intelektualnej").getValue().toString();
                 String pusk_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Podstawy użytkowania systemów komputerowych").getValue().toString();
