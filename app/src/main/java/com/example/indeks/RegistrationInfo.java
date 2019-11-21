@@ -3,34 +3,23 @@ package com.example.indeks;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
+public class RegistrationInfo extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
-public class RegistrationInfo extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener {
-
-    private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
-    private String userID;
-
     private DatabaseReference databaseReference;
 
     private EditText editTextName;
@@ -44,13 +33,15 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
     private Spinner spinner;
     private Button buttonSave;
 
-    public static String study;
+    private String study;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_info);
-        firebaseAuth = FirebaseAuth.getInstance();
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
@@ -58,33 +49,33 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
         }
 
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        assert user != null;
         userID = user.getUid();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Students");
 
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextSurname = (EditText) findViewById(R.id.editTextSurname);
-        editTextPesel = (EditText) findViewById(R.id.editTextPesel);
-        editTextStreet = (EditText) findViewById(R.id.editTextStreet);
-        editTextCity = (EditText) findViewById(R.id.editTextCity);
-        editTextPostalAddress = (EditText) findViewById(R.id.editTextPostalAddress);
-        editTextBirthdayDate = (EditText) findViewById(R.id.editTextBirthdayDate);
-        editTextPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
-        spinner = (Spinner) findViewById(R.id.spinner);
+        editTextName = findViewById(R.id.editTextName);
+        editTextSurname = findViewById(R.id.editTextSurname);
+        editTextPesel = findViewById(R.id.editTextPesel);
+        editTextStreet = findViewById(R.id.editTextStreet);
+        editTextCity = findViewById(R.id.editTextCity);
+        editTextPostalAddress = findViewById(R.id.editTextPostalAddress);
+        editTextBirthdayDate = findViewById(R.id.editTextBirthdayDate);
+        editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);
+        spinner = findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(RegistrationInfo.this, R.array.kierunki, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        buttonSave = (Button) findViewById(R.id.buttonSaveInfo);
+        buttonSave = findViewById(R.id.buttonSaveInfo);
         buttonSave.setOnClickListener(this);
     }
 
     private void saveUserInformation() {
-
         String email = user.getEmail();
-
         String name = editTextName.getText().toString().trim();
         String surname = editTextSurname.getText().toString().trim();
         String pesel = editTextPesel.getText().toString().trim();
@@ -97,19 +88,15 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
         study = String.valueOf(spinner.getSelectedItem());
 
         UserInformation userInformation = new UserInformation(name, surname, pesel, street, city, postalAddress, birthdayDate, study, phoneNumber, email, userID);
-
         databaseReference.child(userID).child("User_Information").setValue(userInformation);
+
         databaseReference.child(userID).child("Image_Information").child("Name").setValue("Empty");
         databaseReference.child(userID).child("Image_Information").child("URL").setValue("Empty");
 
-        Toast.makeText(this, "Zapisywanie danych...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RegistrationInfo.this, "Zapisywanie danych...", Toast.LENGTH_SHORT).show();
 
         finish();
         startActivity(new Intent(RegistrationInfo.this, Home.class));
-    }
-
-    public static String getStudy() {
-        return study;
     }
 
     private void saveGrades() {
@@ -219,9 +206,7 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-    }
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
