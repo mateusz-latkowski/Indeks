@@ -1,11 +1,15 @@
 <resources>
-    <string name="app_name">INDEKS</string>
+    <string name="app_name">Indeks Elektroniczny</string>
+
+    <string name="editTextMail">E-mail</string>
+    <string name="editTextPassword">Hasło</string>
+
+    // MainActivity - Login
+    <string name="textViewLogin">Nie masz konta? Zarejestruj się!</string>
+    <string name="textViewRecoveryPassword">Zapomniałeś hasła? Kliknij tutaj!</string>
+    <string name="buttonLogin">ZALOGUJ</string>
 
     // Registration
-    <string name="mail">lalta96@gmail.com</string>
-    <string name="pass">lalta1</string>
-    <string name="enterMailRegistration">Podaj e-mail</string>
-    <string name="enterPasswordRegistration">Podaj hasło</string>
     <string name="buttonRegistration">Zarejestruj</string>
     <string name="textViewRegistration">Jesteś zarejestrowany? Zaloguj się!</string>
 
@@ -58,13 +62,6 @@
         <item></item>
     </string-array>
 
-    // MainActivity - Login
-    <string name="enterMail">Podaj e-mail</string>
-    <string name="enterPassword">Podaj hasło</string>
-    <string name="textViewLogin">Nie masz konta? Zarejestruj się!</string>
-    <string name="textViewRecoveryPassword">Zapomniałeś hasła? Kliknij tutaj!</string>
-    <string name="buttonLogin">ZALOGUJ</string>
-
     // Home
     <string name="text">Przykładowy tekst</string>
     <string name="buttonLogOut">Wyloguj</string>
@@ -76,6 +73,10 @@
     <string name="buttonTeachers">Nauczyciele</string>
     <string name="buttonApplication">Plan zajęć</string>
     <string name="buttonChat">Chat</string>
+
+
+
+
 
     // UserProfil
     <string name="imageDescription">imageStudent</string>
