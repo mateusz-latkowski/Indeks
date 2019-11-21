@@ -14,26 +14,15 @@
     <string name="textViewRegistration">Jesteś zarejestrowany? Zaloguj się!</string>
 
     // RegistrationInfo
-    <string name="enterName">Imię/Imiona</string>
-    <string name="enterSurname">Nazwisko</string>
-    <string name="birthdayDate">Data urodzenia</string>
-    <string name="enterPesel">PESEL</string>
-    <string name="enterStreet">Ulica</string>
-    <string name="enterCity">Miasto</string>
-    <string name="enterPostalAddress">Kod pocztowy</string>
-    <string name="enterBirthday">Data urodzenia</string>
-    <string name="enterStudy">Kierunek studiów</string>
-    <string name="enterPhoneNumber">Numer telefonu</string>
+    <string name="editTextName">Imię/Imiona</string>
+    <string name="editTextSurname">Nazwisko</string>
+    <string name="editTextPesel">PESEL</string>
+    <string name="editTextStreet">Ulica</string>
+    <string name="editTextCity">Miasto</string>
+    <string name="editTextPostalAddress">Kod pocztowy</string>
+    <string name="editTextBirthday">Data urodzenia</string>
+    <string name="editTextPhoneNumber">Numer telefonu</string>
     <string name="buttonSave">Zapisz</string>
-
-    <string name="Name">Mateusz</string>
-    <string name="Surname">Latkowski</string>
-    <string name="Pesel">96071302750</string>
-    <string name="Street">Jesionowa 6/4</string>
-    <string name="City">Łazy</string>
-    <string name="PostalAddress">42-450</string>
-    <string name="Birthday">13-07-1996</string>
-    <string name="PhoneNumber">510563355</string>
 
     <string-array name="kierunki">
         <item>Administracja</item>
@@ -59,7 +48,6 @@
         <item>Informatyka Stosowana</item>
         <item>Pedagogika</item>
         <item>Psychologia</item>
-        <item></item>
     </string-array>
 
     // Home
