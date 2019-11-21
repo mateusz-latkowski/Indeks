@@ -17,14 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button buttonLogin;
     private EditText editTextMail;
     private EditText editTextPassword;
-    private TextView textViewSignin;
+    private TextView textViewSignIn;
     private TextView textViewResetPassword;
 
     private FirebaseAuth firebaseAuth;
@@ -41,14 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(getApplicationContext(), Home.class));
         }
 
-        editTextMail = (EditText) findViewById(R.id.editTextMailLogin);
-        editTextPassword = (EditText) findViewById(R.id.editTextPaswswordLogin);
-        buttonLogin = (Button) findViewById(R.id.buttonSignIn);
-        textViewSignin = (TextView) findViewById(R.id.textViewSignIn);
-        textViewResetPassword = (TextView) findViewById(R.id.textViewRecoveryPass);
+        editTextMail = findViewById(R.id.editTextMailLogin);
+        editTextPassword = findViewById(R.id.editTextPasswordLogin);
+        buttonLogin = findViewById(R.id.buttonSignIn);
+        textViewSignIn = findViewById(R.id.textViewSignIn);
+        textViewResetPassword = findViewById(R.id.textViewRecoveryPass);
 
         buttonLogin.setOnClickListener(this);
-        textViewSignin.setOnClickListener(this);
+        textViewSignIn.setOnClickListener(this);
         textViewResetPassword.setOnClickListener(this);
     }
 
@@ -84,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             userLogin();
         }
 
-        if (v == textViewSignin) {
+        if (v == textViewSignIn) {
             startActivity(new Intent(MainActivity.this, Registration.class));
         }
 

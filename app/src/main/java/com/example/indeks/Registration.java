@@ -22,7 +22,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     private Button buttonRegister;
     private EditText editTextMail;
     private EditText editTextPassword;
-    private TextView textViewSignup;
+    private TextView textViewSignUp;
 
     private FirebaseAuth firebaseAuth;
 
@@ -38,14 +38,14 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(getApplicationContext(), Home.class));
         }
 
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
-        editTextMail = (EditText) findViewById(R.id.editTextMailRegistration);
+        buttonRegister = findViewById(R.id.buttonRegistration);
+        editTextMail = findViewById(R.id.editTextMailRegistration);
 
-        editTextPassword = (EditText) findViewById(R.id.editTextPaswswordRegistration);
-        textViewSignup = (TextView) findViewById(R.id.textViewSignUp);
+        editTextPassword = findViewById(R.id.editTextPasswordRegistration);
+        textViewSignUp = findViewById(R.id.textViewSignUp);
 
         buttonRegister.setOnClickListener(this);
-        textViewSignup.setOnClickListener(this);
+        textViewSignUp.setOnClickListener(this);
     }
 
     private void registerUser() {
@@ -82,7 +82,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             registerUser();
         }
 
-        if (v == textViewSignup) {
+        if (v == textViewSignUp) {
             startActivity(new Intent(Registration.this, MainActivity.class));
         }
     }
