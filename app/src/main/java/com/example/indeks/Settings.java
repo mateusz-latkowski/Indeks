@@ -52,6 +52,8 @@ public class Settings extends AppCompatActivity {
     private EditText newPostalAddress;
     private EditText newPhoneNumber;
 
+    private String userID;
+
     private Uri imageURI;
 
     private static final int PICK_IMAGE_REQUEST = 71;
@@ -64,15 +66,15 @@ public class Settings extends AppCompatActivity {
         getSupportActionBar().setTitle("USTAWIENIA");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        String userID = user.getUid();
+        userID = user.getUid();
 
         storageReference = FirebaseStorage.getInstance().getReference("Images");
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID);
 
-        buttonUpload = (Button) findViewById(R.id.buttonImageUpload);
-        buttonChoose = (Button) findViewById(R.id.buttonImageChoose);
-        buttonChangePassword = (Button) findViewById(R.id.buttonChangePassword);
-        buttonChangeData = (Button) findViewById(R.id.buttonChangeData);
+        buttonUpload = findViewById(R.id.buttonImageUpload);
+        buttonChoose = findViewById(R.id.buttonImageChoose);
+        buttonChangePassword = findViewById(R.id.buttonChangePassword);
+        buttonChangeData = findViewById(R.id.buttonChangeData);
 
         buttonChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,10 +103,10 @@ public class Settings extends AppCompatActivity {
     }
 
     private void changeData() {
-        newStreet = (EditText) findViewById(R.id.editTextChangeStreet);
-        newCity = (EditText) findViewById(R.id.editTextChangeCity);
-        newPostalAddress = (EditText) findViewById(R.id.editTextChangePostalAddress);
-        newPhoneNumber = (EditText) findViewById(R.id.editTextChangePhoneNumber);
+        newStreet = findViewById(R.id.editTextChangeStreet);
+        newCity =  findViewById(R.id.editTextChangeCity);
+        newPostalAddress = findViewById(R.id.editTextChangePostalAddress);
+        newPhoneNumber = findViewById(R.id.editTextChangePhoneNumber);
 
         String street = newStreet.getText().toString().trim();
         String city = newCity.getText().toString().trim();
@@ -128,8 +130,8 @@ public class Settings extends AppCompatActivity {
     }
 
     private void changePassword() {
-        newPassword = (EditText) findViewById(R.id.editTextNewPassword);
-        newPassword2 = (EditText) findViewById(R.id.editTextNewPassword2);
+        newPassword = findViewById(R.id.editTextNewPassword);
+        newPassword2 = findViewById(R.id.editTextNewPassword2);
 
         final String newPass = newPassword.getText().toString().trim();
         final String newPass2 = newPassword2.getText().toString().trim();
@@ -167,8 +169,6 @@ public class Settings extends AppCompatActivity {
             imageURI = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageURI);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -183,8 +183,6 @@ public class Settings extends AppCompatActivity {
 
     private void FileUploader() {
         if (imageURI != null) {
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String userID = user.getUid();
             StorageReference ref = storageReference.child(userID + "." + getExtension(imageURI));
             databaseReference.child("Image_Information").child("Name").setValue(userID + "." + getExtension(imageURI));
 
