@@ -93,10 +93,13 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
         databaseReference.child(userID).child("Image_Information").child("Name").setValue("Empty");
         databaseReference.child(userID).child("Image_Information").child("URL").setValue("Empty");
 
-        Toast.makeText(RegistrationInfo.this, "Zapisywanie danych...", Toast.LENGTH_SHORT).show();
-
-        finish();
-        startActivity(new Intent(RegistrationInfo.this, Home.class));
+        if (!name.isEmpty() && !surname.isEmpty() && !pesel.isEmpty() && !street.isEmpty() && !city.isEmpty() && !postalAddress.isEmpty() && !birthdayDate.isEmpty() && !phoneNumber.isEmpty()) {
+            Toast.makeText(RegistrationInfo.this, "Zapisywanie danych...", Toast.LENGTH_SHORT).show();
+            finish();
+            startActivity(new Intent(RegistrationInfo.this, Home.class));
+        } else {
+            Toast.makeText(RegistrationInfo.this, "Pola nie mogą być puste!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveGrades() {
