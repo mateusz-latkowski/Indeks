@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ResetPassword extends AppCompatActivity {
 
-    private EditText editTextEmailPasswordReset;
+    private EditText editTextResetEmail;
     private Button buttonResetPassword;
     private FirebaseAuth firebaseAuth;
 
@@ -31,13 +31,13 @@ public class ResetPassword extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        editTextEmailPasswordReset = findViewById(R.id.editTextResetPassword);
+        editTextResetEmail = findViewById(R.id.editTextResetEmail);
         buttonResetPassword = findViewById(R.id.buttonResetPassword);
 
         buttonResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userEmail = editTextEmailPasswordReset.getText().toString();
+                String userEmail = editTextResetEmail.getText().toString();
 
                 if (TextUtils.isEmpty(userEmail))
                 {
