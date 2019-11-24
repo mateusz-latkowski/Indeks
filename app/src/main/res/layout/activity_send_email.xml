@@ -6,91 +6,135 @@
     android:layout_height="match_parent"
     tools:context=".SendEmail">
 
-    <EditText
-        android:id="@+id/editTextRecipient"
+
+    <TextView
+        android:id="@+id/textViewEmailAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:hint="Odbiorca"
-        android:textAlignment="center"
+        android:text="@string/textViewSendEmail"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.325"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/editTextEnterEmail"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounder_corner_input"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/editTextMail"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailAccount"
+        app:layout_constraintVertical_bias="0.028"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/editTextEnterPassword"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounder_corner_input"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/editTextPassword"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/editTextRecipient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnterEmail"
+        app:layout_constraintVertical_bias="0.05"
+        tools:ignore="LabelFor" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textViewSendEmail2"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextRecipient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEnterPassword"
+        app:layout_constraintVertical_bias="0.827" />
+
+    <EditText
+        android:id="@+id/editTextRecipient"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="@string/recipient"
+        android:background="@drawable/rounder_corner_input"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.459"
         tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/editTextSubject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:background="@drawable/rounder_corner_input"
         android:ems="10"
+        android:hint="@string/subject"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:hint="Temat"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRecipient"
-        app:layout_constraintVertical_bias="0.112"
+        app:layout_constraintVertical_bias="0.03"
         tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/editTextMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="320dp"
+        android:layout_height="150dp"
+        android:background="@drawable/rounder_corner_input"
         android:ems="10"
+        android:gravity="left"
+        android:hint="@string/message"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:lines="4"
-        android:hint="Treść maila"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="2000"
+        android:maxLines="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSubject"
-        app:layout_constraintVertical_bias="0.196"
+        app:layout_constraintVertical_bias="0.047"
         tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/buttonSendEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner"
         android:text="@string/buttonSend"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMessage" />
-
-    <EditText
-        android:id="@+id/editTextEnterPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:ems="10"
-        android:hint="Hasło"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextRecipient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextEnterEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEnterPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="LabelFor" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMessage"
+        app:layout_constraintVertical_bias="0.25" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
