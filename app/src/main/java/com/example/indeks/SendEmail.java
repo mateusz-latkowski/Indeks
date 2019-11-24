@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -32,6 +35,8 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
     private EditText editTextMessage;
     private Button buttonSendEmail;
 
+    private FirebaseAuth firebaseAuth;
+
     String email;
     String password;
     String recipient;
@@ -45,7 +50,11 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("E-MAIL");
 
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
         editTextEmail = findViewById(R.id.editTextEnterEmail);
+        editTextEmail.setText(user.getEmail());
         editTextPassword = findViewById(R.id.editTextEnterPassword);
 
         editTextRecipient = findViewById(R.id.editTextRecipient);
