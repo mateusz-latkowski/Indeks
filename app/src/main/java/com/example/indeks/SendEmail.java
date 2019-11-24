@@ -24,15 +24,13 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText enterMail;
-    private EditText enterPass;
+    private EditText editTextEmail;
+    private EditText editTextPassword;
 
     private EditText editTextRecipient;
     private EditText editTextSubject;
-    private EditText editTextMess;
-    private Button buttonSend;
-
-    private Session session;
+    private EditText editTextMessage;
+    private Button buttonSendEmail;
 
     String email;
     String password;
@@ -47,24 +45,24 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("E-MAIL");
 
-        enterMail = (EditText) findViewById(R.id.editTextEnterEmail);
-        enterPass = (EditText) findViewById(R.id.editTextEnterPassword);
+        editTextEmail = findViewById(R.id.editTextEnterEmail);
+        editTextPassword = findViewById(R.id.editTextEnterPassword);
 
-        editTextRecipient = (EditText) findViewById(R.id.editTextRecipient);
-        editTextSubject = (EditText) findViewById(R.id.editTextSubject);
-        editTextMess = (EditText) findViewById(R.id.editTextMessage);
-        buttonSend = (Button) findViewById(R.id.buttonSendEmail);
+        editTextRecipient = findViewById(R.id.editTextRecipient);
+        editTextSubject = findViewById(R.id.editTextSubject);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        buttonSendEmail = findViewById(R.id.buttonSendEmail);
 
-        buttonSend.setOnClickListener(this);
+        buttonSendEmail.setOnClickListener(this);
     }
 
     private void sendEmail() {
-        email = enterMail.getText().toString().trim();
-        password = enterPass.getText().toString().trim();
+        email = editTextEmail.getText().toString().trim();
+        password = editTextPassword.getText().toString().trim();
 
         recipient = editTextRecipient.getText().toString().trim();
         subject = editTextSubject.getText().toString().trim();
-        message = editTextMess.getText().toString().trim();
+        message = editTextMessage.getText().toString().trim();
 
         SendEmailConfiguration smc = new SendEmailConfiguration();
         smc.execute();
@@ -82,7 +80,7 @@ public class SendEmail extends AppCompatActivity implements View.OnClickListener
             prop.put("mail.smtp.auth", "true");
             prop.put("mail.smtp.port", "465");
 
-            session = Session.getDefaultInstance(prop,
+            Session session = Session.getDefaultInstance(prop,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
                             return new PasswordAuthentication(email, password);
