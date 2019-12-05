@@ -1,57 +1,77 @@
 package com.example.indeks;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Home extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView textViewUserEmail;
+    private TextView textViewUserName;
     private Button buttonLogOut;
-    private Button buttonUserProfile;
-    private Button buttonCalendar;
-    private Button buttonSett;
-    private Button buttonSendMail;
-    private Button buttonGrades;
-    private Button buttonTeachers;
-    private Button buttonChat;
-    private Button buttonLessonPlan;
-
+    private ImageButton buttonUserProfile;
+    private ImageButton buttonCalendar;
+    private ImageButton buttonSett;
+    private ImageButton buttonSendMail;
+    private ImageButton buttonGrades;
+    private ImageButton buttonTeachers;
+    private ImageButton buttonChat;
+    private ImageButton buttonLessonPlan;
     private FirebaseAuth firebaseAuth;
 
+    private String name;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        if (firebaseAuth.getCurrentUser() == null) {
-            finish();
-            startActivity(new Intent(Home.this, MainActivity.class));
-        }
-
         FirebaseUser user = firebaseAuth.getCurrentUser();
+        String userID = user.getUid();
 
-        textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
-        textViewUserEmail.setText("Witaj " + user.getEmail());
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child("Students_Info").child(userID);
 
-        buttonLogOut = (Button) findViewById(R.id.buttonLogOut);
-        buttonUserProfile = (Button) findViewById(R.id.buttonUserProfile);
-        buttonCalendar = (Button) findViewById(R.id.buttonCalendar);
-        buttonSett = (Button) findViewById(R.id.buttonSettings);
-        buttonSendMail = (Button) findViewById(R.id.buttonEmail);
-        buttonGrades = (Button) findViewById(R.id.buttonGrades);
-        buttonTeachers = (Button) findViewById(R.id.buttonTeachers);
-        buttonChat = (Button) findViewById(R.id.buttonChat);
-        buttonLessonPlan = (Button) findViewById(R.id.buttonLessonPlan);
+        textViewUserName = findViewById(R.id.textViewUserName);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                name = dataSnapshot.child("Name").getValue().toString();
+                textViewUserName.setText("Witaj " + name + "! Kliknij w jedną z ikon!");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        buttonLogOut = findViewById(R.id.buttonLogout);
+        buttonUserProfile = findViewById(R.id.imageButtonUserProfile);
+        buttonCalendar = findViewById(R.id.imageButtonCalendar);
+        buttonSett = findViewById(R.id.imageButtonSettings);
+        buttonSendMail = findViewById(R.id.imageButtonEmail);
+        buttonGrades = findViewById(R.id.imageButtonGrades);
+        buttonTeachers = findViewById(R.id.imageButtonTeachers);
+        buttonChat = findViewById(R.id.imageButtonChat);
+        buttonLessonPlan = findViewById(R.id.imageButtonLessonPlan);
 
         buttonLogOut.setOnClickListener(this);
         buttonUserProfile.setOnClickListener(this);
