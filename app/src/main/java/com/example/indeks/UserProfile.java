@@ -46,15 +46,18 @@ public class UserProfile extends AppCompatActivity {
     private TextView studentName;
     private TextView studentSurname;
     private TextView studentPesel;
+    private TextView studentBirthdayDate;
+    private TextView studentID;
     private TextView studentStreet;
     private TextView studentCity;
     private TextView studentPostalAddress;
-    private TextView studentBirthdayDate;
     private TextView studentStudy;
+    private TextView studentEmail;
     private TextView studentPhoneNumber;
-    private DatabaseReference databaseReference;
 
     private ImageView image;
+
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,52 +66,54 @@ public class UserProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("PROFIL");
 
-        studentName = (TextView) findViewById(R.id.textViewValue_1);
-        studentSurname = (TextView) findViewById(R.id.textViewValue_2);
-        studentPesel = (TextView) findViewById(R.id.textViewValue_3);
-        studentStreet = (TextView) findViewById(R.id.textViewValue_4);
-        studentCity = (TextView) findViewById(R.id.textViewValue_5);
-        studentPhoneNumber = (TextView) findViewById(R.id.textViewValue_6);
-        studentPostalAddress = (TextView) findViewById(R.id.textViewValue_7);
-        studentBirthdayDate = (TextView) findViewById(R.id.textViewValue_8);
-        studentStudy = (TextView) findViewById(R.id.textViewValue_9);
-        image = (ImageView) findViewById(R.id.imageViewStudent);
+        studentName = findViewById(R.id.textViewName);
+        studentSurname = findViewById(R.id.textViewSurname);
+        studentPesel = findViewById(R.id.textViewPesel);
+        studentID = findViewById(R.id.textViewId);
+        studentBirthdayDate = findViewById(R.id.textViewBirthdayDate);
+        studentStreet = findViewById(R.id.textViewStreet);
+        studentCity = findViewById(R.id.textViewCity);
+        studentPostalAddress = findViewById(R.id.textViewPostalAddress);
+        studentStudy = findViewById(R.id.textViewStudy);
+        studentPhoneNumber = findViewById(R.id.textViewPhoneNumber);
+        studentEmail = findViewById(R.id.textViewEmaill);
+        image = findViewById(R.id.imageViewStudent);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userID = user.getUid();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userID = user.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("User_Information").child("Name").getValue().toString();
-                String surname = dataSnapshot.child("User_Information").child("Surname").getValue().toString();
-                String pesel = dataSnapshot.child("User_Information").child("Pesel").getValue().toString();
-                String street = dataSnapshot.child("User_Information").child("Street").getValue().toString();
-                String city = dataSnapshot.child("User_Information").child("City").getValue().toString();
-                String postalAddress = dataSnapshot.child("User_Information").child("PostalAddress").getValue().toString();
-                String birthdayDate = dataSnapshot.child("User_Information").child("BirthdayDate").getValue().toString();
-                String study = dataSnapshot.child("User_Information").child("Study").getValue().toString();
-                String phoneNumber = dataSnapshot.child("User_Information").child("PhoneNumber").getValue().toString();
+                String name = dataSnapshot.child("Students_Info").child(userID).child("Name").getValue().toString();
+                String surname = dataSnapshot.child("Students_Info").child(userID).child("Surname").getValue().toString();
+                String pesel = dataSnapshot.child("Students_Info").child(userID).child("Pesel").getValue().toString();
+                String birthdayDate = dataSnapshot.child("Students_Info").child(userID).child("BirthdayDate").getValue().toString();
+                String street = dataSnapshot.child("Students_Info").child(userID).child("Street").getValue().toString();
+                String city = dataSnapshot.child("Students_Info").child(userID).child("City").getValue().toString();
+                String postalAddress = dataSnapshot.child("Students_Info").child(userID).child("PostalAddress").getValue().toString();
+                String study = dataSnapshot.child("Students_Info").child(userID).child("Study").getValue().toString();
+                String email = user.getEmail();
+                String phoneNumber = dataSnapshot.child("Students_Info").child(userID).child("PhoneNumber").getValue().toString();
 
-                String image_url = dataSnapshot.child("Image_Information").child("URL").getValue().toString();
+                String image_url = dataSnapshot.child("Image_Info").child(userID).child("URL").getValue().toString();
 
                 if (image_url != "Empty") {
                     Glide.with(getApplicationContext()).load(image_url).into(image);
-                }
-                else {
-                    Toast.makeText(UserProfile.this, "Nie załączono zdjęcia!", Toast.LENGTH_SHORT).show();
                 }
 
                 studentName.setText(name);
                 studentSurname.setText(surname);
                 studentPesel.setText(pesel);
+                studentBirthdayDate.setText(birthdayDate);
+                studentID.setText(userID);
                 studentStreet.setText(street);
                 studentCity.setText(city);
-                studentPhoneNumber.setText(phoneNumber);
                 studentPostalAddress.setText(postalAddress);
-                studentBirthdayDate.setText(birthdayDate);
                 studentStudy.setText(study);
+                studentEmail.setText(email);
+                studentPhoneNumber.setText(phoneNumber);
             }
 
             @Override
