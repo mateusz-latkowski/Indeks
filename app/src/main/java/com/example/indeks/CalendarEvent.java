@@ -51,7 +51,9 @@ public class CalendarEvent extends AppCompatActivity {
     private TextView textView, textViewDate;
     private EditText description;
     private Button buttonEvent;
-    private String date, passDate, time, userID;
+
+    private String date, passDate, userID;
+
     private NumberPicker numberPickerHour, numberPickerMinutes;
 
     private FirebaseUser user;
@@ -60,9 +62,6 @@ public class CalendarEvent extends AppCompatActivity {
     private ListView listView;
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> arrayAdapter;
-
-    private final String CHANNEL_ID = "personal_notification";
-    private final int NOTIFICATION_ID = 001;
 
     CalendarEventInformation calendarEventInformation;
 
@@ -77,16 +76,16 @@ public class CalendarEvent extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("Events");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Events").child(userID);
 
-        textView = (TextView) findViewById(R.id.textViewCalendar);
-        calendarView = (CalendarView) findViewById(R.id.calendarView);
-        buttonEvent = (Button) findViewById(R.id.buttonSetEvent);
-
+        calendarView = findViewById(R.id.calendarView);
+        textView = findViewById(R.id.textViewCalendar);
+        buttonEvent = findViewById(R.id.buttonSetEvent);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                month = month + 1;
                 date = dayOfMonth + "." + month + "." + year;
                 textView.setText(date);
                 passDate = date;
@@ -99,8 +98,7 @@ public class CalendarEvent extends AppCompatActivity {
                 addEvent();
             }
         });
-
-        downloadEvent();
+        showEvent();
     }
 
     private void addEvent() {
@@ -125,53 +123,37 @@ public class CalendarEvent extends AppCompatActivity {
                 .setTitle("WYDARZENIE")
                 .setNegativeButton("ANULUJ", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {}
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
                 })
                 .setPositiveButton("DODAJ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child(description.getText().toString()).child("Date").setValue(passDate);
-                        databaseReference.child(description.getText().toString()).child("Description").setValue(description.getText().toString());
-                        if (numberPickerMinutes.getValue() < 10) {
-                        databaseReference.child(description.getText().toString()).child("Time").setValue(numberPickerHour.getValue() + ":0" + numberPickerMinutes.getValue()); }
-                        else {
-                        databaseReference.child(description.getText().toString()).child("Time").setValue(numberPickerHour.getValue() + ":" + numberPickerMinutes.getValue()); }
+                        if (description.getText().toString().equals("")) {
+                            Toast.makeText(CalendarEvent.this, "Pola nie mogą być puste!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            databaseReference.child(description.getText().toString()).child("Date").setValue(passDate);
+                            databaseReference.child(description.getText().toString()).child("Description").setValue(description.getText().toString());
 
-                        Toast.makeText(getApplicationContext(), "Wydarzenie zostało zapisane!", Toast.LENGTH_SHORT).show();
+                            if (numberPickerMinutes.getValue() < 10) {
+                                databaseReference.child(description.getText().toString()).child("Time").setValue(numberPickerHour.getValue() + ":0" + numberPickerMinutes.getValue());
+                            } else {
+                                databaseReference.child(description.getText().toString()).child("Time").setValue(numberPickerHour.getValue() + ":" + numberPickerMinutes.getValue());
+                            }
+                            finish();
+                            startActivity(new Intent(CalendarEvent.this, Home.class));
+                            Toast.makeText(getApplicationContext(), "Wydarzenie zostało zapisane!", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
         builder.create().show();
     }
 
-   private void notification() {
-        createNotificationChannel();
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID);
-        builder.setSmallIcon(R.drawable.ic_message);
-        builder.setContentTitle("Indeks Elektroniczny");
-        builder.setContentText("Przypomnienie o wydarzeniu!");
-        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-       NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-       notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
-   }
-
-   private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Personal Notifications";
-            String description = "Include all the personal notifications";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, name, importance);
-            notificationChannel.setDescription(description);
-            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(notificationChannel);
-        }
-   }
-
-    private void downloadEvent() {
+    private void showEvent() {
         calendarEventInformation = new CalendarEventInformation();
-        listView = (ListView) findViewById(R.id.listViewEvents);
+        listView = findViewById(R.id.listViewEvents);
         arrayList = new ArrayList<>();
         arrayAdapter = new ArrayAdapter<String>(CalendarEvent.this, R.layout.event_info, R.id.eventInfo, arrayList);
 
