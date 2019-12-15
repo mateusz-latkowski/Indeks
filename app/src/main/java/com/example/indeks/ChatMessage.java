@@ -4,41 +4,40 @@ import java.util.Date;
 
 public class ChatMessage {
 
-    private String text;
-    private String user;
-    private long time;
-
-    public ChatMessage(String text, String user) {
-        this.text = text;
-        this.user = user;
-
-        time = new Date().getTime();
-    }
+    private String Text;
+    private String User;
+    private long Time;
 
     public ChatMessage() {}
 
+    public ChatMessage(String text, String user) {
+        this.Text = text;
+        this.User = user;
+
+        this.Time = new Date().getTime();
+    }
+
     public String getText() {
-        return text;
+        return Text;
     }
 
     public void setText(String text) {
-        this.text = text;
+        Text = text;
     }
 
     public String getUser() {
-        return user;
+        return User;
     }
 
     public void setUser(String user) {
-        this.user = user;
+        User = user;
     }
 
     public long getTime() {
-        return time;
+        return Time;
     }
 
     public void setTime(long time) {
-        this.time = time;
+        Time = time;
     }
-
 }
