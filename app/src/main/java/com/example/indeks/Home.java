@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity implements View.OnClickListener{
 
     private TextView textViewUserName;
-    private Button buttonLogOut;
+    private ImageButton buttonLogOut;
     private ImageButton buttonUserProfile;
     private ImageButton buttonCalendar;
     private ImageButton buttonSett;
@@ -32,6 +32,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     private ImageButton buttonTeachers;
     private ImageButton buttonChat;
     private ImageButton buttonLessonPlan;
+    private ImageButton buttonDeanery;
     private FirebaseAuth firebaseAuth;
 
     private String name;
@@ -63,7 +64,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        buttonLogOut = findViewById(R.id.buttonLogout);
+        buttonLogOut = findViewById(R.id.imageButtonLogout);
         buttonUserProfile = findViewById(R.id.imageButtonUserProfile);
         buttonCalendar = findViewById(R.id.imageButtonCalendar);
         buttonSett = findViewById(R.id.imageButtonSettings);
@@ -72,6 +73,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonTeachers = findViewById(R.id.imageButtonTeachers);
         buttonChat = findViewById(R.id.imageButtonChat);
         buttonLessonPlan = findViewById(R.id.imageButtonLessonPlan);
+        buttonDeanery = findViewById(R.id.imageButtonDeanery);
 
         buttonLogOut.setOnClickListener(this);
         buttonUserProfile.setOnClickListener(this);
@@ -82,6 +84,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
         buttonTeachers.setOnClickListener(this);
         buttonChat.setOnClickListener(this);
         buttonLessonPlan.setOnClickListener(this);
+        buttonDeanery.setOnClickListener(this);
     }
 
     @Override
@@ -115,5 +118,9 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         if (v == buttonLessonPlan) {
             startActivity(new Intent(Home.this, LessonPlan.class)); }
+
+        if (v == buttonDeanery) {
+            startActivity(new Intent(Home.this, Deanery.class));
+        }
     }
 }
