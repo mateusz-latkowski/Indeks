@@ -13,6 +13,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,8 +62,7 @@ public class Grades extends AppCompatActivity {
     private TextView textView8_2;
     private TextView textView9_1;
     private TextView textView9_2;
-    private TextView textView10_1;
-    private TextView textView10_2;
+
     private TextView textView11_1;
     private TextView textView11_2;
     private TextView textView12_1;
@@ -76,8 +77,7 @@ public class Grades extends AppCompatActivity {
     private TextView textView16_2;
     private TextView textView17_1;
     private TextView textView17_2;
-    private TextView textView18_1;
-    private TextView textView18_2;
+
     private TextView textView21_1;
     private TextView textView21_2;
     private TextView textView22_1;
@@ -94,6 +94,8 @@ public class Grades extends AppCompatActivity {
     private TextView textView27_2;
     private TextView textView28_1;
     private TextView textView28_2;
+    private TextView textView29_1;
+    private TextView textView29_2;
 
     private final String CHANNEL_ID = "personal_notification";
     private final int NOTIFICATION_ID = 001;
@@ -113,7 +115,7 @@ public class Grades extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("User_Information");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child("Students_Info").child(userID);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -152,8 +154,6 @@ public class Grades extends AppCompatActivity {
         textView8_2 = (TextView) findViewById(R.id.textViewRow8_2);
         textView9_1 = (TextView) findViewById(R.id.textViewRow9_1);
         textView9_2 = (TextView) findViewById(R.id.textViewRow9_2);
-        textView10_1 = (TextView) findViewById(R.id.textViewRow10_1);
-        textView10_2 = (TextView) findViewById(R.id.textViewRow10_2);
 
         break_1 = (TextView) findViewById(R.id.textViewBreak_1);
         textView2 = (TextView) findViewById(R.id.textViewRow2);
@@ -171,8 +171,6 @@ public class Grades extends AppCompatActivity {
         textView16_2 = (TextView) findViewById(R.id.textViewRow16_2);
         textView17_1 = (TextView) findViewById(R.id.textViewRow17_1);
         textView17_2 = (TextView) findViewById(R.id.textViewRow17_2);
-        textView18_1 = (TextView) findViewById(R.id.textViewRow18_1);
-        textView18_2 = (TextView) findViewById(R.id.textViewRow18_2);
 
         break_2 = (TextView) findViewById(R.id.textViewBreak_2);
         textView3 = (TextView) findViewById(R.id.textViewRow3);
@@ -192,155 +190,225 @@ public class Grades extends AppCompatActivity {
         textView27_2 = (TextView) findViewById(R.id.textViewRow27_2);
         textView28_1 = (TextView) findViewById(R.id.textViewRow28_1);
         textView28_2 = (TextView) findViewById(R.id.textViewRow28_2);
+        textView29_1 = (TextView) findViewById(R.id.textViewRow29_1);
+        textView29_2 = (TextView) findViewById(R.id.textViewRow29_2);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("Grades").child("InformatykaStosowana");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Grades").child("Informatyka Stosowana");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String lektorat = dataSnapshot.child("Semestr_1").child("Lektorat języka angielskiego I").getValue().toString();
-                String matematyka = dataSnapshot.child("Semestr_1").child("Matematyka I").getValue().toString();
-                String owi = dataSnapshot.child("Semestr_1").child("Ochrona własności intelektualnej").getValue().toString();
-                String pusk = dataSnapshot.child("Semestr_1").child("Podstawy użytkowania systemów komputerowych").getValue().toString();
-                String wf = dataSnapshot.child("Semestr_1").child("WF").getValue().toString();
-                String wdi = dataSnapshot.child("Semestr_1").child("Wstęp do informatyki").getValue().toString();
-                String wdp = dataSnapshot.child("Semestr_1").child("Wstęp do programowania").getValue().toString();
-                String wdpia = dataSnapshot.child("Semestr_1").child("Wstęp do pomiarów i automatyki").getValue().toString();
-                String semestr_1 = dataSnapshot.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").getValue().toString();
-
-                String lektorat_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Lektorat języka angielskiego I").getValue().toString();
-                String matematyka_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Matematyka I").getValue().toString();
-                String owi_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Ochrona własności intelektualnej").getValue().toString();
-                String pusk_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Podstawy użytkowania systemów komputerowych").getValue().toString();
-                String wf_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("WF").getValue().toString();
-                String wdi_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Wstęp do informatyki").getValue().toString();
-                String wdp_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Wstęp do programowania").getValue().toString();
-                String wdpia_notification = dataSnapshot.child("Semestr_1_NOTIFICATION").child("Wstęp do pomiarów i automatyki").getValue().toString();
+                String lektorat_1 = dataSnapshot.child("Semestr_1").child("Lektorat języka angielskiego I").child(userID).child("Lektorat").getValue().toString();
+                String matematyka_1 = dataSnapshot.child("Semestr_1").child("Matematyka I").child(userID).child("Konwersatorium").getValue().toString();
+                String owi = dataSnapshot.child("Semestr_1").child("Ochrona własności intelektualnej").child(userID).child("Wykład").getValue().toString();
+                String pusk = dataSnapshot.child("Semestr_1").child("Podstawy użytkowania systemów komputerowych").child(userID).child("Laboratorium").getValue().toString();
+                String wdi_l = dataSnapshot.child("Semestr_1").child("Wstęp do informatyki").child(userID).child("Laboratorium").getValue().toString();
+                String wdi_w = dataSnapshot.child("Semestr_1").child("Wstęp do informatyki").child(userID).child("Wykład").getValue().toString();
+                String wdi_okm = dataSnapshot.child("Semestr_1").child("Wstęp do informatyki").child(userID).child("OKM").getValue().toString();
+                String wdpia = dataSnapshot.child("Semestr_1").child("Wstęp do pomiarów i automatyki").child(userID).child("Laboratorium").getValue().toString();
+                String wdp_l = dataSnapshot.child("Semestr_1").child("Wstęp do programowania").child(userID).child("Laboratorium").getValue().toString();
+                String wdp_w = dataSnapshot.child("Semestr_1").child("Wstęp do programowania").child(userID).child("Wykład").getValue().toString();
+                String wdp_okm = dataSnapshot.child("Semestr_1").child("Wstęp do programowania").child(userID).child("OKM").getValue().toString();
+                String semestr_1 = dataSnapshot.child("Semestr_1").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").getValue().toString();
 
                 textView2_1.setText("Lektorat języka angielskiego I");
-                textView2_2.setText(lektorat);
+                textView2_2.setText("L: " + lektorat_1);
                 textView3_1.setText("Matematyka I");
-                textView3_2.setText(matematyka);
+                textView3_2.setText("K: " + matematyka_1);
                 textView4_1.setText("Ochrona własności intelektualnej");
-                textView4_2.setText(owi);
+                textView4_2.setText("W: " + owi);
                 textView5_1.setText("Podstawy użytkowania systemów komputerowych");
-                textView5_2.setText(pusk);
-                textView6_1.setText("WF");
-                textView6_2.setText(wf);
-                textView7_1.setText("Wstęp do informatyki");
-                textView7_2.setText(wdi);
-                textView8_1.setText("Wstęp do programowania");
-                textView8_2.setText(wdp);
-                textView9_1.setText("Wstęp do pomiarów i automatyki");
-                textView9_2.setText(wdpia);
-                textView10_1.setText("SEMESTR 1 ZALICZONY?");
-                textView10_2.setText(semestr_1);
-
-                String[] subject = {lektorat, matematyka, owi, pusk, wf, wdi, wdp, wdpia};
-                String[] subject_not = {lektorat_notification, matematyka_notification, owi_notification, pusk_notification, wf_notification, wdi_notification, wdp_notification, wdpia_notification};
-
-                for (int i = 0; i < subject.length-1; i++) {
-                    if (!subject[i].equals("Empty")) {
-                        if (subject_not[i].equals("1")) {
-                            notification(); }
-                    }
-                }
+                textView5_2.setText("L: " + pusk);
+                textView6_1.setText("Wstęp do informatyki\n\n");
+                textView6_2.setText("L: " + wdi_l + "\nW: " + wdi_w + "\nOKM: " + wdi_okm);
+                textView7_1.setText("Wstęp do pomiarów i automatyki");
+                textView7_2.setText("L: " + wdpia);
+                textView8_1.setText("Wstęp do programowania\n\n");
+                textView8_2.setText("L: " + wdp_l + "\nW: " + wdp_w + "\nOKM: " + wdp_okm);
+                textView9_1.setText("SEMESTR 1 ZALICZONY?");
+                textView9_2.setText("S: " + semestr_1);
 
                 if (semestr_1.equals("TAK")) {
-                    String aip = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").getValue().toString();
-                    String ak =  dataSnapshot.child("Semestr_2").child("Architektura komputerów").getValue().toString();
-                    String fizyka =  dataSnapshot.child("Semestr_2").child("Fizyka").getValue().toString();
-                    String lektorat2 =  dataSnapshot.child("Semestr_2").child("Lektorat języka angielskiego II").getValue().toString();
-                    String matematyka2 =  dataSnapshot.child("Semestr_2").child("Matematyka II").getValue().toString();
-                    String peie =  dataSnapshot.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").getValue().toString();
-                    String wf2 =  dataSnapshot.child("Semestr_2").child("WF").getValue().toString();
-                    String semestr_2 =  dataSnapshot.child("Semestr_2").child("_SEMESTR_2_ZALICZONY_?").getValue().toString();
+                    String aip_l = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("Laboratorium").getValue().toString();
+                    String aip_k = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("Konwersatorium").getValue().toString();
+                    String aip_w = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("Wykład").getValue().toString();
+                    String aip_okm = dataSnapshot.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("OKM").getValue().toString();
+                    String ak_l =  dataSnapshot.child("Semestr_2").child("Architektura komputerów").child(userID).child("Laboratorium").getValue().toString();
+                    String ak_w =  dataSnapshot.child("Semestr_2").child("Architektura komputerów").child(userID).child("Wykład").getValue().toString();
+                    String ak_okm =  dataSnapshot.child("Semestr_2").child("Architektura komputerów").child(userID).child("OKM").getValue().toString();
+                    String fizyka_l = dataSnapshot.child("Semestr_2").child("Fizyka").child(userID).child("Laboratorium").getValue().toString();
+                    String fizyka_k = dataSnapshot.child("Semestr_2").child("Fizyka").child(userID).child("Konwersatorium").getValue().toString();
+                    String fizyka_w = dataSnapshot.child("Semestr_2").child("Fizyka").child(userID).child("Wykład").getValue().toString();
+                    String fizyka_okm = dataSnapshot.child("Semestr_2").child("Fizyka").child(userID).child("OKM").getValue().toString();
+                    String lektorat_2 =  dataSnapshot.child("Semestr_2").child("Lektorat języka angielskiego II").child(userID).child("Lektorat").getValue().toString();
+                    String matematyka_2 =  dataSnapshot.child("Semestr_2").child("Matematyka II").child(userID).child("Konwersatorium").getValue().toString();
+                    String peie_l =  dataSnapshot.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").child(userID).child("Laboratorium").getValue().toString();
+                    String peie_w =  dataSnapshot.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").child(userID).child("Wykład").getValue().toString();
+                    String peie_okm =  dataSnapshot.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").child(userID).child("OKM").getValue().toString();
+                    String semestr_2 =  dataSnapshot.child("Semestr_2").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").getValue().toString();
+
+                    TableRow row2_1 = findViewById(R.id.row2_1);
+                    row2_1.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_2 = findViewById(R.id.row2_2);
+                    row2_2.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_3 = findViewById(R.id.row2_3);
+                    row2_3.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_4 = findViewById(R.id.row2_4);
+                    row2_4.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_5 = findViewById(R.id.row2_5);
+                    row2_5.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_6 = findViewById(R.id.row2_6);
+                    row2_6.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_7 = findViewById(R.id.row2_7);
+                    row2_7.setBackgroundResource(R.color.TableBorder);
+                    TableRow row2_8 = findViewById(R.id.row2_8);
+                    row2_8.setBackgroundResource(R.color.TableBorder);
 
                     break_1.setVisibility(View.VISIBLE);
                     textView2.setVisibility(View.VISIBLE);
-                    textView11_1.setText("Algorytmy i programowanie");
+                    textView2.setBackgroundResource(R.color.titleBackground);
+                    textView11_1.setText("Algorytmy i programowanie\n\n\n");
                     textView11_1.setVisibility(View.VISIBLE);
-                    textView11_2.setText(aip);
+                    textView11_1.setBackgroundResource(R.color.rowsBackground);
+                    textView11_2.setText("L: " + aip_l + "\nK: " + aip_k + "\nW: " + aip_w + "\nOKM: " + aip_okm);
                     textView11_2.setVisibility(View.VISIBLE);
-                    textView12_1.setText("Architektura komputerów");
+                    textView11_2.setBackgroundResource(R.color.rowsBackground);
+                    textView12_1.setText("Architektura komputerów\n\n");
                     textView12_1.setVisibility(View.VISIBLE);
-                    textView12_2.setText(ak);
+                    textView12_1.setBackgroundResource(R.color.rowsBackground);
+                    textView12_2.setText("L: " + ak_l + "\nW: " + ak_w  + "\nOKM: " + ak_okm);
                     textView12_2.setVisibility(View.VISIBLE);
-                    textView13_1.setText("Fizyka");
+                    textView12_2.setBackgroundResource(R.color.rowsBackground);
+                    textView13_1.setText("Fizyka\n\n\n");
                     textView13_1.setVisibility(View.VISIBLE);
-                    textView13_2.setText(fizyka);
+                    textView13_1.setBackgroundResource(R.color.rowsBackground);
+                    textView13_2.setText("L: " + fizyka_l + "\nK: " + fizyka_k + "\nW: " + fizyka_w + "\nOKM: " + fizyka_okm);
                     textView13_2.setVisibility(View.VISIBLE);
+                    textView13_2.setBackgroundResource(R.color.rowsBackground);
                     textView14_1.setText("Lektorat języka angielskiego II");
                     textView14_1.setVisibility(View.VISIBLE);
-                    textView14_2.setText(lektorat2);
+                    textView14_1.setBackgroundResource(R.color.rowsBackground);
+                    textView14_2.setText("L: " + lektorat_2);
                     textView14_2.setVisibility(View.VISIBLE);
+                    textView14_2.setBackgroundResource(R.color.rowsBackground);
                     textView15_1.setText("Matematyka II");
                     textView15_1.setVisibility(View.VISIBLE);
-                    textView15_2.setText(matematyka2);
+                    textView15_1.setBackgroundResource(R.color.rowsBackground);
+                    textView15_2.setText("K: " + matematyka_2);
                     textView15_2.setVisibility(View.VISIBLE);
-                    textView16_1.setText("Podstawy elektrotechniki i elektroniki");
+                    textView15_2.setBackgroundResource(R.color.rowsBackground);
+                    textView16_1.setText("Podstawy elektrotechniki i elektroniki\n\n");
                     textView16_1.setVisibility(View.VISIBLE);
-                    textView16_2.setText(peie);
+                    textView16_1.setBackgroundResource(R.color.rowsBackground);
+                    textView16_2.setText("L: " + peie_l + "\nW:" + peie_w + "\nOKM: " + peie_okm);
                     textView16_2.setVisibility(View.VISIBLE);
-                    textView17_1.setText("WF");
+                    textView16_2.setBackgroundResource(R.color.rowsBackground);
+                    textView17_1.setText("SEMESTR 2 ZALICZONY?");
                     textView17_1.setVisibility(View.VISIBLE);
-                    textView17_2.setText(wf2);
+                    textView17_1.setBackgroundResource(R.color.titleBackground);
+                    textView17_2.setText("S: " + semestr_2);
                     textView17_2.setVisibility(View.VISIBLE);
-                    textView18_1.setText("SEMESTR 2 ZALICZONY?");
-                    textView18_1.setVisibility(View.VISIBLE);
-                    textView18_2.setText(semestr_2);
-                    textView18_2.setVisibility(View.VISIBLE);
-
-                    if (!aip.equals("Empty") || !ak.equals("Empty") || !fizyka.equals("Empty") || !lektorat2.equals("Empty") || !matematyka2.equals("Empty") || !peie.equals("Empty") || !wf2.equals("Empty")) {
-                        notification(); }
+                    textView17_2.setBackgroundResource(R.color.titleBackground);
 
                     if (semestr_2.equals("TAK")) {
-                        String aisd = dataSnapshot.child("Semestr_3").child("Algorytmy i struktury danych").getValue().toString();
-                        String bd =  dataSnapshot.child("Semestr_3").child("Bazy danych").getValue().toString();
-                        String lektorat3 =  dataSnapshot.child("Semestr_3").child("Lektorat języka angielskiego III").getValue().toString();
-                        String md =  dataSnapshot.child("Semestr_3").child("Matematyka dyskretna").getValue().toString();
-                        String ptm =  dataSnapshot.child("Semestr_3").child("Podstawy techniki mikroprocesorowej").getValue().toString();
-                        String pi =  dataSnapshot.child("Semestr_3").child("Prawo informatyczne").getValue().toString();
-                        String sk =  dataSnapshot.child("Semestr_3").child("Sieci komputerowe").getValue().toString();
-                        String semestr_3 =  dataSnapshot.child("Semestr_3").child("_SEMESTR_3_ZALICZONY_?").getValue().toString();
+                        String aisd_l = dataSnapshot.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("Laboratorium").getValue().toString();
+                        String aisd_k = dataSnapshot.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("Konwersatorium").getValue().toString();
+                        String aisd_w = dataSnapshot.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("Wykład").getValue().toString();
+                        String aisd_okm = dataSnapshot.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("OKM").getValue().toString();
+                        String bd_l = dataSnapshot.child("Semestr_3").child("Bazy danych").child(userID).child("Laboratorium").getValue().toString();
+                        String bd_w = dataSnapshot.child("Semestr_3").child("Bazy danych").child(userID).child("Wykład").getValue().toString();
+                        String bd_okm = dataSnapshot.child("Semestr_3").child("Bazy danych").child(userID).child("OKM").getValue().toString();
+                        String lektorat_3 =  dataSnapshot.child("Semestr_3").child("Lektorat języka angielskiego III").child(userID).child("Lektorat").getValue().toString();
+                        String md_k = dataSnapshot.child("Semestr_3").child("Matematyka dyskretna").child(userID).child("Konwersatorium").getValue().toString();
+                        String md_w = dataSnapshot.child("Semestr_3").child("Matematyka dyskretna").child(userID).child("Wykład").getValue().toString();
+                        String md_okm = dataSnapshot.child("Semestr_3").child("Matematyka dyskretna").child(userID).child("OKM").getValue().toString();
+                        String ptm =  dataSnapshot.child("Semestr_3").child("Podstawy techniki mikroprocesorowej").child(userID).child("Laboratorium").getValue().toString();
+                        String pi =  dataSnapshot.child("Semestr_3").child("Prawo informatyczne").child(userID).child("Wykład").getValue().toString();
+                        String sk_l =  dataSnapshot.child("Semestr_3").child("Sieci komputerowe").child(userID).child("Laboratorium").getValue().toString();
+                        String sk_w =  dataSnapshot.child("Semestr_3").child("Sieci komputerowe").child(userID).child("Wykład").getValue().toString();
+                        String sk_okm =  dataSnapshot.child("Semestr_3").child("Sieci komputerowe").child(userID).child("OKM").getValue().toString();
+                        String wf = dataSnapshot.child("Semestr_3").child("WF").child(userID).child("Ćwiczenia").getValue().toString();
+                        String semestr_3 =  dataSnapshot.child("Semestr_3").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").getValue().toString();
+
+                        TableRow row3_1 = findViewById(R.id.row3_1);
+                        row3_1.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_2 = findViewById(R.id.row3_2);
+                        row3_2.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_3 = findViewById(R.id.row3_3);
+                        row3_3.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_4 = findViewById(R.id.row3_4);
+                        row3_4.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_5 = findViewById(R.id.row3_5);
+                        row3_5.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_6 = findViewById(R.id.row3_6);
+                        row3_6.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_7 = findViewById(R.id.row3_7);
+                        row3_7.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_8 = findViewById(R.id.row3_8);
+                        row3_8.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_9 = findViewById(R.id.row3_9);
+                        row3_9.setBackgroundResource(R.color.TableBorder);
+                        TableRow row3_10 = findViewById(R.id.row3_10);
+                        row3_10.setBackgroundResource(R.color.TableBorder);
 
                         break_2.setVisibility(View.VISIBLE);
                         textView3.setVisibility(View.VISIBLE);
-                        textView21_1.setText("Algorytmy i struktury danych");
+                        textView3.setBackgroundResource(R.color.titleBackground);
+                        textView21_1.setText("Algorytmy i struktury danych\n\n\n");
                         textView21_1.setVisibility(View.VISIBLE);
-                        textView21_2.setText(aisd);
+                        textView21_1.setBackgroundResource(R.color.rowsBackground);
+                        textView21_2.setText("L: " + aisd_l + "\nK: " + aisd_k + "\nW: " + aisd_w + "\nOKM: " + aisd_okm);
                         textView21_2.setVisibility(View.VISIBLE);
-                        textView22_1.setText("Bazy danych");
+                        textView21_2.setBackgroundResource(R.color.rowsBackground);
+                        textView22_1.setText("Bazy danych\n\n");
                         textView22_1.setVisibility(View.VISIBLE);
-                        textView22_2.setText(bd);
+                        textView22_1.setBackgroundResource(R.color.rowsBackground);
+                        textView22_2.setText("L: " + bd_l + "\nW: " + bd_w + "\nOKM: " + bd_okm);
                         textView22_2.setVisibility(View.VISIBLE);
+                        textView22_2.setBackgroundResource(R.color.rowsBackground);
                         textView23_1.setText("Lektorat języka angielskiego III");
                         textView23_1.setVisibility(View.VISIBLE);
-                        textView23_2.setText(lektorat3);
+                        textView23_1.setBackgroundResource(R.color.rowsBackground);
+                        textView23_2.setText("L: " + lektorat_3);
                         textView23_2.setVisibility(View.VISIBLE);
-                        textView24_1.setText("Matematyka dyskretna");
+                        textView23_2.setBackgroundResource(R.color.rowsBackground);
+                        textView24_1.setText("Matematyka dyskretna\n\n");
                         textView24_1.setVisibility(View.VISIBLE);
-                        textView24_2.setText(md);
+                        textView24_1.setBackgroundResource(R.color.rowsBackground);
+                        textView24_2.setText("K: " + md_k + "\nW: " + md_w + "\nOKM: " + md_okm);
                         textView24_2.setVisibility(View.VISIBLE);
+                        textView24_2.setBackgroundResource(R.color.rowsBackground);
                         textView25_1.setText("Podstawy techniki mikroprocesorowej");
                         textView25_1.setVisibility(View.VISIBLE);
-                        textView25_2.setText(ptm);
+                        textView25_1.setBackgroundResource(R.color.rowsBackground);
+                        textView25_2.setText("L: " + ptm);
                         textView25_2.setVisibility(View.VISIBLE);
+                        textView25_2.setBackgroundResource(R.color.rowsBackground);
                         textView26_1.setText("Prawo informatyczne");
                         textView26_1.setVisibility(View.VISIBLE);
-                        textView26_2.setText(pi);
+                        textView26_1.setBackgroundResource(R.color.rowsBackground);
+                        textView26_2.setText("W: " + pi);
                         textView26_2.setVisibility(View.VISIBLE);
-                        textView27_1.setText("Sieci komputerowe");
+                        textView26_2.setBackgroundResource(R.color.rowsBackground);
+                        textView27_1.setText("Sieci komputerowe\n\n");
                         textView27_1.setVisibility(View.VISIBLE);
-                        textView27_2.setText(sk);
+                        textView27_1.setBackgroundResource(R.color.rowsBackground);
+                        textView27_2.setText("L: " + sk_l + "\nW: " + sk_w + "\nOKM: " + sk_okm);
                         textView27_2.setVisibility(View.VISIBLE);
-                        textView28_1.setText("SEMESTR 3 ZALICZONY?");
+                        textView27_2.setBackgroundResource(R.color.rowsBackground);
+                        textView28_1.setText("WF");
                         textView28_1.setVisibility(View.VISIBLE);
-                        textView28_2.setText(semestr_3);
+                        textView28_1.setBackgroundResource(R.color.rowsBackground);
+                        textView28_2.setText("Ć: " + wf);
                         textView28_2.setVisibility(View.VISIBLE);
+                        textView28_2.setBackgroundResource(R.color.rowsBackground);
+                        textView29_1.setText("SEMESTR 3 ZALICZONY?");
+                        textView29_1.setVisibility(View.VISIBLE);
+                        textView29_1.setBackgroundResource(R.color.titleBackground);
+                        textView29_2.setText("S: " + semestr_3);
+                        textView29_2.setVisibility(View.VISIBLE);
+                        textView29_2.setBackgroundResource(R.color.titleBackground);
 
-                        if (!aisd.equals("Empty") || !bd.equals("Empty") || !lektorat3.equals("Empty") || !md.equals("Empty") || !ptm.equals("Empty") || !pi.equals("Empty") || !sk.equals("Empty")) {
-                            notification(); }
                     }
                 }
             }
