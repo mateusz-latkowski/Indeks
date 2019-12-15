@@ -1,139 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserProfile">
 
-    <TextView
-        android:id="@+id/textViewValue_1"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:layout_marginBottom="388dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textViewValue_2"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_1"
-        app:layout_constraintVertical_bias="0.033" />
+        <ImageView
+            android:id="@+id/imageViewStudent"
+            android:layout_width="100dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/imageDescription"
+            app:srcCompat="@color/common_google_signin_btn_text_light_default" />
 
-    <TextView
-        android:id="@+id/textViewValue_3"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_2"
-        app:layout_constraintVertical_bias="0.026" />
+        <TextView
+            android:id="@+id/textViewNameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextName"
+            android:layout_marginTop="25dp"/>
 
-    <TextView
-        android:id="@+id/textViewValue_4"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_3"
-        app:layout_constraintVertical_bias="0.042" />
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
 
-    <TextView
-        android:id="@+id/textViewValue_5"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_4"
-        app:layout_constraintVertical_bias="0.053" />
+        <TextView
+            android:id="@+id/textViewSurnameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextSurname"
+            android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:id="@+id/textViewValue_6"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.539"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_5"
-        app:layout_constraintVertical_bias="0.076" />
+        <TextView
+            android:id="@+id/textViewSurname"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
 
-    <TextView
-        android:id="@+id/textViewValue_7"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_6"
-        app:layout_constraintVertical_bias="0.092" />
+        <TextView
+            android:id="@+id/textViewPeselTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextPesel"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewPesel"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewBirthdayDateTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextBirthday"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewBirthdayDate"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewIdTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextID"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewId"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewStreetTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextStreet"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewStreet"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewCityTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextCity"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewCity"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewPostalAddressTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextPostalAddress"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewPostalAddress"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewStudyTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextStudy"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewStudy"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewEmailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/editTextMail"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewEmaill"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewPhoneNumberTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="@string/TextPhoneNumber"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewPhoneNumber"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
 
 
-    <TextView
-        android:id="@+id/textViewValue_8"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+    </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/textViewValue_9"
-        android:layout_width="142dp"
-        android:layout_height="25dp"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewValue_8"
-        app:layout_constraintVertical_bias="0.09" />
-
-    <ImageView
-        android:id="@+id/imageViewStudent"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
-        android:contentDescription="@string/imageDescription"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@color/common_google_signin_btn_text_light_default" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

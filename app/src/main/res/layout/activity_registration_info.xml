@@ -1,181 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RegistrationInfo">
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:hint="@string/editTextName"
-        android:background="@drawable/rounder_corner_input"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextSurname"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="190dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:hint="@string/editTextSurname"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName"
-        app:layout_constraintVertical_bias="0.05"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextPesel"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="190dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:hint="@string/editTextPesel"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSurname"
-        app:layout_constraintVertical_bias="0.05"
-        tools:ignore="LabelFor" />
-
-
-    <EditText
-        android:id="@+id/editTextStreet"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="190dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:hint="@string/editTextStreet"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPesel"
-        app:layout_constraintVertical_bias="0.064"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextCity"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:hint="@string/editTextCity"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextStreet"
-        app:layout_constraintVertical_bias="0.045"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextPostalAddress"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPostalAddress"
-        android:hint="@string/editTextPostalAddress"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCity"
-        app:layout_constraintVertical_bias="0.05"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/editTextBirthdayDate"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="date"
-        android:hint="@string/editTextBirthday"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPostalAddress"
-        app:layout_constraintVertical_bias="0.071"
-        tools:ignore="LabelFor" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextBirthdayDate"
-        app:layout_constraintVertical_bias="0.082" />
-
-    <EditText
-        android:id="@+id/editTextPhoneNumber"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:background="@drawable/rounder_corner_input"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="phone"
-        android:hint="@string/editTextPhoneNumber"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.102"
-        tools:ignore="LabelFor" />
-
-    <Button
-        android:id="@+id/buttonSaveInfo"
-        android:layout_width="140dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corner"
-        android:text="@string/buttonSave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber"
-        app:layout_constraintVertical_bias="0.297" />
+        android:orientation="vertical" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewReigstrationInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="@string/textViewRegistrationInfo" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/TextName"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextSurname"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:hint="@string/TextSurname"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextPesel"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:hint="@string/TextPesel"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextStreet"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:hint="@string/TextStreet"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextCity"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:hint="@string/TextCity"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextPostalAddress"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="textPostalAddress"
+                android:hint="@string/TextPostalAddress"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <EditText
+                android:id="@+id/editTextBirthdayDate"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:hint="@string/TextBirthday"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center" >
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="320dp"
+                android:layout_height="45dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center">
+
+            <EditText
+                android:id="@+id/editTextPhoneNumber"
+                android:layout_width="320dp"
+                android:layout_height="45dp"
+                android:background="@drawable/rounded_inputs"
+                android:ems="10"
+                android:importantForAutofill="no"
+                android:inputType="phone"
+                android:hint="@string/TextPhoneNumber"
+                android:textAlignment="center"
+                tools:ignore="LabelFor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/buttonSaveInfo"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_buttons"
+                android:text="@string/buttonSave" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
