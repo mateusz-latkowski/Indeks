@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Deanery">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textViewInfo"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="@string/textViewInfo"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textViewDepartmentTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewDepartmentTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewDepartment"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewEmployeeTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewEmployeeTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewEmployee"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewEmailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewEmailTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewEmail"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewPhoneNumberTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewPhoneNumberTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewPhoneNumber"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewRoomlTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewRoomTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewRoom"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TableLayout
+            android:id="@+id/table_2"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="@string/textViewHoursTitle"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    android:background="@color/titleBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewRowMonday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:text="@string/Monday"
+                    android:layout_weight="1"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewRowMondayHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/rowsBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewRowTuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Tuesday"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewRowTuesdayyHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewRowWednesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:text="@string/Wednesday"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewRowWednesdayHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewThursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Thursday"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewRowThursdayHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewFriday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Friday"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewRowFridayHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textViewBossTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewBossTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewBoss"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewBossEmailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewEmailTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewBossEmail"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TextView
+            android:id="@+id/textViewBossRoomTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/textViewRoomTitle"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:id="@+id/textViewBossRoom"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/rounded_inputs"/>
+
+        <TableLayout
+            android:id="@+id/table_3"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewBossHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text="@string/textViewHoursTitle"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    android:background="@color/titleBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/TableBorder" >
+
+                <TextView
+                    android:id="@+id/textViewRowFridayBoss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/Friday"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/textViewRowFridayBossHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="2dp"
+                    android:background="@color/colorInputTextBackground"
+                    android:textSize="17sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+</ScrollView>
