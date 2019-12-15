@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Chat">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/list_of_message"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            tools:ignore="NestedScrolling" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <EditText
+                android:id="@+id/editTextSendMessage"
+                android:layout_width="610dp"
+                android:importantForAutofill="no"
+                android:layout_height="45dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_inputs"
+                android:hint="@string/editTextInputMessage"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/buttonSendMessage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/ic_send" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
