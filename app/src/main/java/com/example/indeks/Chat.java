@@ -16,22 +16,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.List;
-
 public class Chat extends AppCompatActivity {
 
     private FirebaseListAdapter<ChatMessage> adapter;
+
     private EditText editTextSendMessage;
     private EditText editTextTopic;
     private Button buttonSendMessage;
-    ListView listView;
-    private TextView messageText, messageUser, messageTime;
+
+    private TextView messageText;
+    private TextView messageUser;
+    private TextView messageTime;
+
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +42,16 @@ public class Chat extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("CHAT");
 
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         LayoutInflater layoutInflater = this.getLayoutInflater();
-        View view = layoutInflater.inflate(R.layout.add_room, null);
+        View view = layoutInflater.inflate(R.layout.add_topic, null);
 
         editTextTopic = view.findViewById(R.id.editTextTopic);
 
         builder.setView(view)
-                .setTitle("WYBIERZ POKÓJ")
+                .setTitle("Wpisz temat rozmowy..")
                 .setNegativeButton("ANULUJ", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -68,8 +71,8 @@ public class Chat extends AppCompatActivity {
     }
 
     private void createMessage() {
-        editTextSendMessage = (EditText) findViewById(R.id.editTextSendMessage);
-        buttonSendMessage = (Button) findViewById(R.id.buttonSendMessage);
+        editTextSendMessage = findViewById(R.id.editTextSendMessage);
+        buttonSendMessage = findViewById(R.id.buttonSendMessage);
 
         buttonSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,21 +87,19 @@ public class Chat extends AppCompatActivity {
     }
 
     private void showMessage() {
-        listView = (ListView) findViewById(R.id.list_of_message);
+        listView = findViewById(R.id.list_of_message);
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class, R.layout.message_info, FirebaseDatabase.getInstance().getReference().child("Message").child(editTextTopic.getText().toString())) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
-
-                messageText = (TextView) v.findViewById(R.id.message_text);
-                messageUser = (TextView) v.findViewById(R.id.message_user);
-                messageTime = (TextView) v.findViewById(R.id.message_time);
+                messageText = v.findViewById(R.id.textViewMessageText);
+                messageUser = v.findViewById(R.id.textViewMessageUser);
+                messageTime = v.findViewById(R.id.textViewMessageTime);
 
                 messageText.setText(model.getText());
                 messageUser.setText(model.getUser());
                 messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", model.getTime()));
             }
         };
-
         listView.setAdapter(adapter);
     }
 
