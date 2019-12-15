@@ -69,7 +69,7 @@ public class Settings extends AppCompatActivity {
         userID = user.getUid();
 
         storageReference = FirebaseStorage.getInstance().getReference("Images");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID);
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students");
 
         buttonUpload = findViewById(R.id.buttonImageUpload);
         buttonChoose = findViewById(R.id.buttonImageChoose);
@@ -114,13 +114,13 @@ public class Settings extends AppCompatActivity {
         String phoneNumber = newPhoneNumber.getText().toString().trim();
 
         if (!street.isEmpty()) {
-            databaseReference.child("User_Information").child("Street").setValue(street); }
+            databaseReference.child("Students_Info").child(userID).child("Street").setValue(street); }
         if (!city.isEmpty()) {
-            databaseReference.child("User_Information").child("City").setValue(city); }
+            databaseReference.child("Students_Info").child(userID).child("City").setValue(city); }
         if (!postalAddress.isEmpty()) {
-            databaseReference.child("User_Information").child("PostalAddress").setValue(postalAddress); }
+            databaseReference.child("Students_Info").child(userID).child("PostalAddress").setValue(postalAddress); }
         if (!phoneNumber.isEmpty()) {
-            databaseReference.child("User_Information").child("PhoneNumber").setValue(phoneNumber); }
+            databaseReference.child("Students_Info").child(userID).child("PhoneNumber").setValue(phoneNumber); }
 
         Toast.makeText(Settings.this, "Twoje dane zostały zaktualizowane!", Toast.LENGTH_SHORT).show();
         newStreet.setText("");
@@ -184,7 +184,7 @@ public class Settings extends AppCompatActivity {
     private void FileUploader() {
         if (imageURI != null) {
             StorageReference ref = storageReference.child(userID + "." + getExtension(imageURI));
-            databaseReference.child("Image_Information").child("Name").setValue(userID + "." + getExtension(imageURI));
+            databaseReference.child("Image_Info").child(userID).child("Name").setValue(userID + "." + getExtension(imageURI));
 
             ref.putFile(imageURI)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -194,7 +194,7 @@ public class Settings extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     String download_url = uri.toString();
-                                    databaseReference.child("Image_Information").child("URL").setValue(download_url);
+                                    databaseReference.child("Image_Info").child(userID).child("URL").setValue(download_url);
                                 }
                             });
                             Toast.makeText(Settings.this, "Zdjęcie zostało zaktualizowane!", Toast.LENGTH_SHORT).show();
