@@ -88,10 +88,10 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
         study = String.valueOf(spinner.getSelectedItem());
 
         UserInformation userInformation = new UserInformation(name, surname, pesel, street, city, postalAddress, birthdayDate, study, phoneNumber, email, userID);
-        databaseReference.child(userID).child("User_Information").setValue(userInformation);
+        databaseReference.child("Students_Info").child(userID).setValue(userInformation);
 
-        databaseReference.child(userID).child("Image_Information").child("Name").setValue("Empty");
-        databaseReference.child(userID).child("Image_Information").child("URL").setValue("Empty");
+        databaseReference.child("Image_Info").child(userID).child("Name").setValue("Empty");
+        databaseReference.child("Image_Info").child(userID).child("URL").setValue("Empty");
 
         if (!name.isEmpty() && !surname.isEmpty() && !pesel.isEmpty() && !street.isEmpty() && !city.isEmpty() && !postalAddress.isEmpty() && !birthdayDate.isEmpty() && !phoneNumber.isEmpty()) {
             Toast.makeText(RegistrationInfo.this, "Zapisywanie danych...", Toast.LENGTH_SHORT).show();
@@ -104,98 +104,145 @@ public class RegistrationInfo extends AppCompatActivity implements View.OnClickL
 
     private void saveGrades() {
         if (study.equals("Informatyka Stosowana")) {
-            databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("Grades").child("InformatykaStosowana");
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("Grades").child(study);
 
-            databaseReference.child("Semestr_1").child("Matematyka I").setValue("Empty");
-            databaseReference.child("Semestr_1").child("Lektorat języka angielskiego I").setValue("Empty");
-            databaseReference.child("Semestr_1").child("Ochrona własności intelektualnej").setValue("Empty");
-            databaseReference.child("Semestr_1").child("Podstawy użytkowania systemów komputerowych").setValue("Empty");
-            databaseReference.child("Semestr_1").child("WF").setValue("Empty");
-            databaseReference.child("Semestr_1").child("Wstęp do informatyki").setValue("Empty");
-            databaseReference.child("Semestr_1").child("Wstęp do programowania").setValue("Empty");
-            databaseReference.child("Semestr_1").child("Wstęp do pomiarów i automatyki").setValue("Empty");
-            databaseReference.child("Semestr_1").child("_SEMESTR_1_ZALICZONY_?").setValue("NIE");
+            databaseReference.child("Students_Info").child(userID).child("Name").setValue(editTextName.getText().toString());
+            databaseReference.child("Students_Info").child(userID).child("Surname").setValue(editTextSurname.getText().toString());
+            databaseReference.child("Students_Info").child(userID).child("ID").setValue(userID);
 
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Matematyka I").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Lektorat języka angielskiego I").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Ochrona własności intelektualnej").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Podstawy użytkowania systemów komputerowych").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("WF").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Wstęp do informatyki").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Wstęp do programowania").setValue("Empty");
-            databaseReference.child("Semestr_1_NOTIFICATION").child("Wstęp do pomiarów i automatyki").setValue("Empty");
+            databaseReference.child("Semestr_1").child("Lektorat języka angielskiego I").child(userID).child("Lektorat").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Matematyka I").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Ochrona własności intelektualnej").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Podstawy użytkowania systemów komputerowych").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do informatyki").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do informatyki").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do informatyki").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do pomiarów i automatyki").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do programowania").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do programowania").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_1").child("Wstęp do programowania").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_1").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
 
-            databaseReference.child("Semestr_2").child("Matematyka II").setValue("Empty");
-            databaseReference.child("Semestr_2").child("Lektorat języka angielskiego II").setValue("Empty");
-            databaseReference.child("Semestr_2").child("Fizyka").setValue("Empty");
-            databaseReference.child("Semestr_2").child("Algorytmy i programowanie").setValue("Empty");
-            databaseReference.child("Semestr_2").child("WF").setValue("Empty");
-            databaseReference.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").setValue("Empty");
-            databaseReference.child("Semestr_2").child("Architektura komputerów").setValue("Empty");
-            databaseReference.child("Semestr_2").child("_SEMESTR_2_ZALICZONY_?").setValue("NIE");
+            databaseReference.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Algorytmy i programowanie").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Architektura komputerów").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Architektura komputerów").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Architektura komputerów").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Fizyka").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Fizyka").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Fizyka").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Fizyka").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Lektorat języka angielskiego II").child(userID).child("Lektorat").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Matematyka II").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_2").child("Podstawy elektrotechniki i elektroniki").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_2").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
 
-            databaseReference.child("Semestr_3").child("Algorytmy i struktury danych").setValue("Empty");
-            databaseReference.child("Semestr_3").child("Bazy danych").setValue("Empty");
-            databaseReference.child("Semestr_3").child("Lektorat języka angielskiego III").setValue("Empty");
-            databaseReference.child("Semestr_3").child("Matematyka dyskretna").setValue("Empty");
-            databaseReference.child("Semestr_3").child("Podstawy techniki mikroprocesorowej").setValue("Empty");
-            databaseReference.child("Semestr_3").child("Prawo informatyczne").setValue("Empty");
-            databaseReference.child("Semestr_3").child("Sieci komputerowe").setValue("Empty");
-            databaseReference.child("Semestr_3").child("_SEMESTR_3_ZALICZONY_?").setValue("NIE");
 
-            databaseReference.child("Semestr_4").child("Etyka biznesu i etyki zawodowe").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Lektorat języka angielskiego IV").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Podstawy automatyki i robotyki").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Podstawy inżynierii oprogramwoania").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Podstawy metod probabilistycznych i statystyki").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Podstawy sztucznej inteligencji").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Systemy wbudowane").setValue("Empty");
-            databaseReference.child("Semestr_4").child("Użytkowanie oprogramowania inżynierskiego").setValue("Empty");
-            databaseReference.child("Semestr_4").child("_SEMESTR_4_ZALICZONY_?").setValue("NIE");
+            databaseReference.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Algorytmy i struktury danych").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Bazy danych").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Bazy danych").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Bazy danych").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Lektorat języka angielskiego III").child(userID).child("Lektorat").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Matematyka dyskretna").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Matematyka dyskretna").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Matematyka dyskretna").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Podstawy techniki mikroprocesorowej").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Prawo informatyczne").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_3").child("WF").child(userID).child("Ćwiczenia").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Sieci komputerowe").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Sieci komputerowe").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_3").child("Sieci komputerowe").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_3").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
 
-            databaseReference.child("Semestr_5").child("Elementy grafiki komputerowej i przetwarzania obrazu").setValue("Empty");
-            databaseReference.child("Semestr_5").child("Elementy administracji baz danych").setValue("Empty");
-            databaseReference.child("Semestr_5").child("Kurs C").setValue("Empty");
-            databaseReference.child("Semestr_5").child("Kurs Java").setValue("Empty");
-            databaseReference.child("Semestr_5").child("Systemy operacyjne i programowania systemowe").setValue("Empty");
-            databaseReference.child("Semestr_5").child("Srodowiska i narzędzia wytwarzania oprogramowania").setValue("Empty");
-            databaseReference.child("Semestr_5").child("Wstęp do przedsiębiorczości").setValue("Empty");
-            databaseReference.child("Semestr_5").child("_SEMESTR_5_ZALICZONY_?").setValue("NIE");
+            databaseReference.child("Semestr_4").child("Lektorat języka angielskiego IV").child(userID).child("Lektorat").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Lektorat języka angielskiego IV").child(userID).child("Egzamin").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Lektorat języka angielskiego IV").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy automatyki i robotyki").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy automatyki i robotyki").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy automatyki i robotyki").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy inżynierii oprogramowania").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy inżynierii oprogramowania").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy inżynierii oprogramowania").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy metod probabilistycznych i statystki").child(userID).child("Konwersatorium").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy metod probabilistycznych i statystki").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy metod probabilistycznych i statystki").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy sztucznej inteligencji").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy sztucznej inteligencji").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Podstawy sztucznej inteligencji").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Etyka biznesu i etyki zawodowe").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Systemy wbudowane").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Systemy wbudowane").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Systemy wbudowane").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Użytkowanie oprogramowania inżynierskiego").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Użytkowanie oprogramowania inżynierskiego").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_4").child("Użytkowanie oprogramowania inżynierskiego").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_4").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
 
-            databaseReference.child("Semestr_6").child("Kurs C++").setValue("Empty");
-            databaseReference.child("Semestr_6").child("Kurs JavaScript").setValue("Empty");
-            databaseReference.child("Semestr_6").child("Kurs programowania gier komputerowych z wykorzystaniem silnika Unity").setValue("Empty");
-            databaseReference.child("Semestr_6").child("Pracownia inżynierska - część 1").setValue("Empty");
-            databaseReference.child("Semestr_6").child("Pracownia programowania zespołowego - część 1").setValue("Empty");
-            databaseReference.child("Semestr_6").child("Praktyka inżynierska").setValue("Empty");
-            databaseReference.child("Semestr_6").child("Proseminarium inżynierskie").setValue("Empty");
-            databaseReference.child("Semestr_6").child("_SEMESTR_6_ZALICZONY_?").setValue("NIE");
+            databaseReference.child("Semestr_5").child("Elementy grafiki komputerowej i przetwarzania obrazu").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Elementy administracji baz danych").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Elementy administracji baz danych").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Elementy administracji baz danych").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Kurs C").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Kurs C").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Kurs C").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Kurs Java").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Kurs Java").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Kurs Java").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Systemy operacyjne i programowanie systemowe").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Systemy operacyjne i programowanie systemowe").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Systemy operacyjne i programowanie systemowe").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Środowiska i narzędzia wytwarzania oprogramowania").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_5").child("Wstęp do przedsiębiorczości").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_5").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
 
-            databaseReference.child("Semestr_7").child("Praca dyplomowa").setValue("Empty");
-            databaseReference.child("Semestr_7").child("Pracownia inżynierska - część 2").setValue("Empty");
-            databaseReference.child("Semestr_7").child("Pracownia programowania zespołowego - część 2").setValue("Empty");
-            databaseReference.child("Semestr_7").child("Seminarium inżynierskie").setValue("Empty");
-            databaseReference.child("Semestr_7").child("_SEMESTR_7_ZALICZONY_?").setValue("NIE");
+            databaseReference.child("Semestr_6").child("Kurs C++").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs C++").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs C++").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs JavaScript").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs JavaScript").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs JavaScript").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs programowania gier komputerowych z wykorzystaniem silnika Unity").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs programowania gier komputerowych z wykorzystaniem silnika Unity").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Kurs programowania gier komputerowych z wykorzystaniem silnika Unity").child(userID).child("OKM").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Pracownia inżynierskia I").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Pracownia programowania zespołowego I").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Praktyka inżynierska").child(userID).child("Praktyka").setValue("Brak");
+            databaseReference.child("Semestr_6").child("Proseminarium inżynierskie").child(userID).child("Seminarium").setValue("Brak");
+            databaseReference.child("Semestr_6").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
 
-            databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(userID).child("Schedule");
+            databaseReference.child("Semestr_7").child("Praca dyplomowa").child(userID).child("Seminarium").setValue("Brak");
+            databaseReference.child("Semestr_7").child("Pracownia inżynierskia II").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_7").child("Pracownia programowania zespołowego II").child(userID).child("Laboratorium").setValue("Brak");
+            databaseReference.child("Semestr_7").child("Człowiek w społeczeństwie, społeczeństwo w człowieku").child(userID).child("Wykład").setValue("Brak");
+            databaseReference.child("Semestr_7").child("Seminarium inżynierskie").child(userID).child("Seminarium").setValue("Brak");
+            databaseReference.child("Semestr_7").child("ZALICZENIE SEMESTRU").child(userID).child("Semestr zaliczony?").setValue("NIE");
+
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("Grades").child("Informatyka Stosowana").child("Semestr_7").child("PLAN ZAJĘĆ");
             databaseReference.child("Wtorek").child("11:30").child("Subject").setValue("Seminarium inżynierskie");
             databaseReference.child("Wtorek").child("11:30").child("Time").setValue("11:30 - 13:00");
-            databaseReference.child("Wtorek").child("11:30").child("Teacher").setValue("Kobieta Kot");
+            databaseReference.child("Wtorek").child("11:30").child("Teacher").setValue("dr Jan Kowalski");
             databaseReference.child("Wtorek").child("11:30").child("Room").setValue("B/-1/09");
 
             databaseReference.child("Wtorek").child("13:45").child("Subject").setValue("Człowiek w społeczeństwie, społeczeństwo w człowieku");
             databaseReference.child("Wtorek").child("13:45").child("Time").setValue("13:45 - 15:15");
-            databaseReference.child("Wtorek").child("13:45").child("Teacher").setValue("Kot Bonifacy");
+            databaseReference.child("Wtorek").child("13:45").child("Teacher").setValue("dr Jan Kowalski");
             databaseReference.child("Wtorek").child("13:45").child("Room").setValue("P/0/01");
 
             databaseReference.child("Środa").child("8:00").child("Subject").setValue("Pracownia programowania inżynierskiego cz. 2");
             databaseReference.child("Środa").child("8:00").child("Time").setValue("8:00 - 11:00");
-            databaseReference.child("Środa").child("8:00").child("Teacher").setValue("Pingwin z Batmana");
+            databaseReference.child("Środa").child("8:00").child("Teacher").setValue("dr Jan Kowalski");
             databaseReference.child("Środa").child("8:00").child("Room").setValue("S/0/05");
 
             databaseReference.child("Środa").child("11:30").child("Subject").setValue("Pracownia inżynierska cz. 2");
             databaseReference.child("Środa").child("11:30").child("Time").setValue("11:30 - 13:00");
-            databaseReference.child("Środa").child("11:30").child("Teacher").setValue("Ambroży Kleks");
+            databaseReference.child("Środa").child("11:30").child("Teacher").setValue("dr Jan Kowalski");
             databaseReference.child("Środa").child("11:30").child("Room").setValue("P/0/03");
         }
     }
