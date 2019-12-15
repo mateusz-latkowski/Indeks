@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Indeks Elektroniczny</string>
 
+    // TESTY
+    <string name="email">jankowalski@gmail.com</string>
+    <string name="pass">lalta1</string>
+
     <string name="editTextMail">E-mail</string>
     <string name="editTextPassword">Hasło</string>
 
@@ -13,15 +17,19 @@
     <string name="buttonRegistration">Zarejestruj</string>
     <string name="textViewRegistration">Jesteś zarejestrowany? Zaloguj się!</string>
 
-    // RegistrationInfo
-    <string name="editTextName">Imię/Imiona</string>
-    <string name="editTextSurname">Nazwisko</string>
-    <string name="editTextPesel">PESEL</string>
-    <string name="editTextStreet">Ulica</string>
-    <string name="editTextCity">Miasto</string>
-    <string name="editTextPostalAddress">Kod pocztowy</string>
-    <string name="editTextBirthday">Data urodzenia</string>
-    <string name="editTextPhoneNumber">Numer telefonu</string>
+    // RegistrationInfo - UserProfile
+    <string name="textViewRegistrationInfo">Podaj swoje dane:</string>
+    <string name="TextName">Imię/Imiona</string>
+    <string name="TextSurname">Nazwisko</string>
+    <string name="TextPesel">Pesel</string>
+    <string name="TextBirthday">Data urodzenia (DD-MM-RRRR)</string>
+    <string name="TextID">ID</string>
+    <string name="TextStreet">Ulica</string>
+    <string name="TextCity">Miasto</string>
+    <string name="TextPostalAddress">Kod pocztowy (00-000)</string>
+    <string name="TextStudy">Kierunek studiów</string>
+    <string name="TextPhoneNumber">Numer telefonu</string>
+    <string name="imageDescription">imageStudent</string>
     <string name="buttonSave">Zapisz</string>
 
     <string-array name="kierunki">
@@ -50,8 +58,12 @@
         <item>Psychologia</item>
     </string-array>
 
+    // ResetPassword
+    <string name="resetText">Na podany przez Ciebie adres e-mail zostanie wysłany link z aktywacją nowego hasła!</string>
+    <string name="buttonReset">Wyślij</string>
+
     // Home
-    <string name="text">Przykładowy tekst</string>
+    <string name="imageDescrption">PRZYCISK</string>
     <string name="buttonLogOut">Wyloguj</string>
     <string name="buttonUserProfile">Profil</string>
     <string name="buttonCalendar">Kalendarz</string>
@@ -62,47 +74,58 @@
     <string name="buttonApplication">Plan zajęć</string>
     <string name="buttonChat">Chat</string>
 
+    // Grades
+    <string name="semestr_1">SEMESTR 1</string>
+    <string name="semestr_2">SEMESTR 2</string>
+    <string name="semestr_3">SEMESTR 3</string>
 
-
-
-
-    // UserProfil
-    <string name="imageDescription">imageStudent</string>
-    <string name="buttonImageUpload">WGRAJ</string>
-    <string name="buttonImageChange">WYBIERZ</string>
-
-    // ReserPassword
-    <string name="resetText">Na podany przez Ciebie adres e-mail zostanie wysłany link z aktywacją nowego hasła!</string>
-    <string name="TextViewResetText">textReset</string>
-    <string name="enterEmailReset">emailReset</string>
-    <string name="buttonReset">Wyślij</string>
-
-    // Settings
-    <string name="photo">Załącz swoje zdjęcie</string>
-
-    <string name="changePassword">Zmiana hasła</string>
-    <string name="currentPassword">Obecne hasło</string>
-    <string name="newPassword">Nowe hasło</string>
-    <string name="newPassword2">Powtórz nowe hasło</string>
-    <string name="buttonChangePassword">Zmień hasło</string>
-
-    <string name="changeData">Zmień dane</string>
-    <string name="changeStreet">Ulica</string>
-    <string name="changeCity">Miasto</string>
-    <string name="changePostalAddress">Kod pocztowy (00-000)</string>
-    <string name="changePhoneNumber">Number telefonu</string>
-    <string name="changeDataButton">AKTUALIZUJ</string>
-
-    // SendEmail
-    <string name="recipient">mateusz.latkowski@smcebi.edu.pl</string>
-    <string name="subject">Próba</string>
-    <string name="message">To jest pierwszy email</string>
-    <string name="buttonSend">Wyślij</string>
-    <string name="title_activity_grades">Grades</string>
-    <string name="action_settings">Settings</string>
+    // Lesson Plan
 
     // Calendar
     <string name="buttonEvent">Dodaj wydarzenie</string>
+    <string name="editTextDecriptionEvent">Opis..</string>
+    <string name="colon">:</string>
 
+    // Chat
+    <string name="editTextInputMessage">Treść wiadomości..</string>
+    <string name="editTextTopic">Temat rozmowy</string>
+
+    // SendEmail
+    <string name="textViewSendEmail">Podaj e-mail i hasło do konta poczty</string>
+    <string name="textViewSendEmail2">Podaj odbiorcę, temat i treść wiadomości</string>
+    <string name="recipient">Odbiorca</string>
+    <string name="subject">Temat</string>
+    <string name="message">Treść</string>
+    <string name="buttonSend">Wyślij</string>
+
+    // Settings
+    <string name="textViewSetImage">Załącz swoje zdjęcie</string>
+    <string name="buttonImageUpload">WGRAJ</string>
+    <string name="buttonImageChoose">WYBIERZ</string>
+    <string name="textViewChangePassword">Zmiana hasła</string>
+    <string name="editTextNewPassword">Nowe hasło</string>
+    <string name="editTextNewPassword2">Powtórz nowe hasło</string>
+    <string name="buttonChangePassword">Zmień hasło</string>
+    <string name="textViewChangeData">Zmień dane</string>
+    <string name="editTextChangeStreet">Ulica</string>
+    <string name="editTextChangeCity">Miasto</string>
+    <string name="editTextChangePostalAddress">Kod pocztowy (00-000)</string>
+    <string name="editTextChangePhoneNumber">Number telefonu</string>
+    <string name="buttonChangeData">AKTUALIZUJ</string>
+
+    // Deanery
+    <string name="textViewInfo">Informacje</string>
+    <string name="textViewDepartmentTitle">Wydział</string>
+    <string name="textViewEmployeeTitle">Pracownik dziekanatu</string>
+    <string name="textViewEmailTitle">Email</string>
+    <string name="textViewPhoneNumberTitle">Numer telefonu</string>
+    <string name="textViewHoursTitle">Godziny przyjęć</string>
+    <string name="textViewRoomTitle">Pokój</string>
+    <string name="textViewBossTitle">Prodziekan</string>
+    <string name="Monday">Poniedziałek</string>
+    <string name="Tuesday">Wtorek</string>
+    <string name="Wednesday">Środa</string>
+    <string name="Thursday">Czwartek</string>
+    <string name="Friday">Piątek</string>
 
 </resources>
