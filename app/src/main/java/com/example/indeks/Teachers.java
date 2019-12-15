@@ -1,20 +1,14 @@
 package com.example.indeks;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Teachers extends AppCompatActivity {
 
@@ -32,27 +25,41 @@ public class Teachers extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> arrayAdapter;
-    TeachersInformation teachersInformation;
+    private String AcademicTitle;
+    private ClipboardManager clipboardManager;
+    TeachersInformation tI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teachers);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("NAUCZYCIELE");
+        getSupportActionBar().setTitle("PROWADZĄCY");
 
-        teachersInformation = new TeachersInformation();
-        listView = (ListView) findViewById(R.id.listViewTeachers);
+        tI = new TeachersInformation();
+        listView = findViewById(R.id.listViewTeachers);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference().child("Teachers");
+        databaseReference = firebaseDatabase.getReference().child("Teachers").child("Teachers_Info");
         arrayList = new ArrayList<>();
         arrayAdapter = new ArrayAdapter<String>(Teachers.this, R.layout.teach_info, R.id.teachInfo, arrayList);
+
+        clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                    teachersInformation = ds.getValue(TeachersInformation.class);
-                    arrayList.add(teachersInformation.getName() + " - " + teachersInformation.getRoom() + " \n " + teachersInformation.getEmail());
+                    tI = ds.getValue(TeachersInformation.class);
+                    if (tI.getAcademicTitle().equals("Doktor")) {
+                        AcademicTitle = "dr"; }
+                    if (tI.getAcademicTitle().equals("Inżynier")) {
+                        AcademicTitle = "inż."; }
+                    if (tI.getAcademicTitle().equals("Magister")) {
+                        AcademicTitle = "mgr"; }
+                    if (tI.getAcademicTitle().equals("Magister Inżynier")) {
+                        AcademicTitle = "mgr inż."; }
+
+                    arrayList.add(AcademicTitle + " " + tI.getName() + " " + tI.getSurname() + "\n" + tI.getRoom() + " - " + tI.getEmail());
                 }
                 listView.setAdapter(arrayAdapter);
             }
@@ -63,6 +70,7 @@ public class Teachers extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
