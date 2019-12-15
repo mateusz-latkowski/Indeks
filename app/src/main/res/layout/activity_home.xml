@@ -129,18 +129,28 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="130dp"
+            android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/buttonLogout"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
+            <ImageButton
+                android:id="@+id/imageButtonDeanery"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentStart="true"
+                android:layout_marginStart="55dp"
+                android:contentDescription="@string/imageDescrption"
+                app:srcCompat="@drawable/ic_deanery"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/imageButtonLogout"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="70dp"
-                android:background="@drawable/rounded_corner"
-                android:text="@string/buttonLogOut" />
+                android:layout_marginEnd="55dp"
+                android:contentDescription="@string/imageDescrption"
+                app:srcCompat="@drawable/ic_logout"
+                tools:ignore="VectorDrawableCompat" />
         </RelativeLayout>
 
     </LinearLayout>
