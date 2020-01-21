@@ -34,7 +34,7 @@ public class Teachers extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teachers);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("PROWADZĄCY");
+        getSupportActionBar().setTitle("WYKŁADOWCY");
 
         tI = new TeachersInformation();
         listView = findViewById(R.id.listViewTeachers);
