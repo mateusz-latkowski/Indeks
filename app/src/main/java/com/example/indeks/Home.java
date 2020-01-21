@@ -2,6 +2,7 @@ package com.example.indeks;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -20,19 +21,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Home extends AppCompatActivity implements View.OnClickListener{
+public class Home extends AppCompatActivity implements View.OnClickListener {
 
     private TextView textViewUserName;
-    private ImageButton buttonLogOut;
-    private ImageButton buttonUserProfile;
-    private ImageButton buttonCalendar;
-    private ImageButton buttonSett;
-    private ImageButton buttonSendMail;
-    private ImageButton buttonGrades;
-    private ImageButton buttonTeachers;
-    private ImageButton buttonChat;
-    private ImageButton buttonLessonPlan;
-    private ImageButton buttonDeanery;
+
+    private CardView buttonGrades;
+    private CardView buttonLessonPlan;
+    private CardView buttonCalendar;
+    private CardView buttonTeachers;
+    private CardView buttonChat;
+    private CardView buttonSendMail;
+    private CardView buttonUserProfile;
+    private CardView buttonSett;
+    private CardView buttonDeanery;
+    private CardView buttonLogOut;
+
     private FirebaseAuth firebaseAuth;
 
     private String name;
@@ -64,27 +67,27 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        buttonLogOut = findViewById(R.id.imageButtonLogout);
-        buttonUserProfile = findViewById(R.id.imageButtonUserProfile);
-        buttonCalendar = findViewById(R.id.imageButtonCalendar);
-        buttonSett = findViewById(R.id.imageButtonSettings);
-        buttonSendMail = findViewById(R.id.imageButtonEmail);
-        buttonGrades = findViewById(R.id.imageButtonGrades);
-        buttonTeachers = findViewById(R.id.imageButtonTeachers);
-        buttonChat = findViewById(R.id.imageButtonChat);
-        buttonLessonPlan = findViewById(R.id.imageButtonLessonPlan);
-        buttonDeanery = findViewById(R.id.imageButtonDeanery);
+        buttonGrades = findViewById(R.id.cardViewGrades);
+        buttonLessonPlan = findViewById(R.id.cardViewLessonPlan);
+        buttonCalendar = findViewById(R.id.cardViewCalendar);
+        buttonTeachers = findViewById(R.id.cardViewTeachers);
+        buttonChat = findViewById(R.id.cardViewChat);
+        buttonSendMail = findViewById(R.id.cardViewEmail);
+        buttonUserProfile = findViewById(R.id.cardViewUserProfile);
+        buttonSett = findViewById(R.id.cardViewSettings);
+        buttonDeanery = findViewById(R.id.cardViewDeanery);
+        buttonLogOut = findViewById(R.id.cardViewLogout);
 
-        buttonLogOut.setOnClickListener(this);
-        buttonUserProfile.setOnClickListener(this);
-        buttonCalendar.setOnClickListener(this);
-        buttonSett.setOnClickListener(this);
-        buttonSendMail.setOnClickListener(this);
         buttonGrades.setOnClickListener(this);
+        buttonLessonPlan.setOnClickListener(this);
+        buttonCalendar.setOnClickListener(this);
         buttonTeachers.setOnClickListener(this);
         buttonChat.setOnClickListener(this);
-        buttonLessonPlan.setOnClickListener(this);
+        buttonSendMail.setOnClickListener(this);
+        buttonUserProfile.setOnClickListener(this);
+        buttonSett.setOnClickListener(this);
         buttonDeanery.setOnClickListener(this);
+        buttonLogOut.setOnClickListener(this);
     }
 
     @Override
