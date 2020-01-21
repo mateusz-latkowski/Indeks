@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -13,7 +13,7 @@
             <ImageView
                 android:layout_width="300dp"
                 android:layout_height="150dp"
-
+                app:srcCompat="@drawable/logo"
                 android:layout_gravity="center"
                 android:contentDescription="@string/imageDescription" />
 
@@ -28,7 +28,6 @@
                     android:layout_height="45dp"
                     android:background="@drawable/rounded_inputs"
                     android:hint="@string/editTextMail"
-                    android:text="@string/email"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:textAlignment="center" />
@@ -48,7 +47,6 @@
                     android:hint="@string/editTextPassword"
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
-                    android:text="@string/pass"
                     android:textAlignment="center" />
 
             </RelativeLayout>
