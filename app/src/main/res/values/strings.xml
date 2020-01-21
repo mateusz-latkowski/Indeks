@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Indeks Elektroniczny</string>
+    <string name="app_name">INDEKS ELEKTRONICZNY</string>
 
     // TESTY
     <string name="email">jankowalski@gmail.com</string>
@@ -64,15 +64,27 @@
 
     // Home
     <string name="imageDescrption">PRZYCISK</string>
-    <string name="buttonLogOut">Wyloguj</string>
+    <string name="buttonLogOut">WYLOGUJ</string>
     <string name="buttonUserProfile">Profil</string>
     <string name="buttonCalendar">Kalendarz</string>
     <string name="buttonSettings">Ustawienia</string>
     <string name="buttonSendMail">E-mail</string>
     <string name="buttonGrades">Oceny</string>
-    <string name="buttonTeachers">Nauczyciele</string>
+    <string name="buttonTeachers">Wykładowcy</string>
     <string name="buttonApplication">Plan zajęć</string>
     <string name="buttonChat">Chat</string>
+    <string name="buttonDeanery">Dziekanat</string>
+
+    <string name="grades">Sprawdź swoje oceny!</string>
+    <string name="lessonplan">Zobacz plan zajęć!</string>
+    <string name="calendar">Dziś kolokwium? Sprawdź!</string>
+    <string name="chat">Porozmawiaj ze znajomymi!</string>
+    <string name="teachers">Zobacz konsultacje wykładowców!</string>
+    <string name="emaildesc">Wyślij e-mail!</string>
+    <string name="profile">Wyświetl swój profil!</string>
+    <string name="settings">Aktualizuj swoje dane!</string>
+    <string name="deanery">Zajrzyj do dziekanatu!</string>
+    <string name="logout">Powodzenia!</string>
 
     // Grades
     <string name="semestr_1">SEMESTR 1</string>
@@ -87,7 +99,7 @@
     <string name="colon">:</string>
 
     // Chat
-    <string name="editTextInputMessage">Treść wiadomości..</string>
+    <string name="editTextInputMessage">\tTreść wiadomości..</string>
     <string name="editTextTopic">Temat rozmowy</string>
 
     // SendEmail
@@ -95,7 +107,7 @@
     <string name="textViewSendEmail2">Podaj odbiorcę, temat i treść wiadomości</string>
     <string name="recipient">Odbiorca</string>
     <string name="subject">Temat</string>
-    <string name="message">Treść</string>
+    <string name="message">\tTreść</string>
     <string name="buttonSend">Wyślij</string>
 
     // Settings
@@ -110,7 +122,7 @@
     <string name="editTextChangeStreet">Ulica</string>
     <string name="editTextChangeCity">Miasto</string>
     <string name="editTextChangePostalAddress">Kod pocztowy (00-000)</string>
-    <string name="editTextChangePhoneNumber">Number telefonu</string>
+    <string name="editTextChangePhoneNumber">Numer telefonu</string>
     <string name="buttonChangeData">AKTUALIZUJ</string>
 
     // Deanery
