@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -15,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Deanery"></activity>
+
+        <activity android:name=".Deanery"/>
         <activity android:name=".LessonPlan" />
         <activity android:name=".Chat" />
         <activity android:name=".CalendarEvent" />
